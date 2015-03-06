@@ -17,6 +17,7 @@ public class MainMenu extends World {
 	}
 
 	public static void main(String[] args) {
+		
 	}
 
 }
