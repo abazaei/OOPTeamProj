@@ -12,7 +12,7 @@ public class MainMenu extends JFrame{
 	private static final int HEIGHT = 600;
 
 	public MainMenu() {
-		System.out.println("hello");
+		System.out.println("asdfkjdshehgoirh");
 		
 	}
 
