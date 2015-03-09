@@ -14,6 +14,8 @@ public class MainMenu extends World {
 		super(WIDTH,HEIGHT,CELL);
 		getBackground().setColor(Color.green);
 		getBackground().fill();
+		System.out.println("hello");
+		
 	}
 
 	public static void main(String[] args) {
