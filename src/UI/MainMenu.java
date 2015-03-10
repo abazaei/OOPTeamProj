@@ -14,7 +14,8 @@ public class MainMenu extends JFrame{
 	private static final int HEIGHT = 600;
 
 	public MainMenu() {
-	
+		JFrame frame = new JFrame();
+		
 		
 	}
 
