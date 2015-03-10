@@ -17,7 +17,7 @@ public class PlayMenu extends JPanel{
 	private static final int WIDTH = 500;
 	private static final int HEIGHT = 600;
 	public String[] tits = {
-			"empty","tits","tits2"
+			"empty","tits","tits2","tits3"
 	};
 	
 	public PlayMenu(){
