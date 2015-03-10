@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -26,15 +27,19 @@ public class MainMenu extends JFrame{
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		frame.setLayout(null);
+		
+		
+		JPanel panel = new JPanel();
 		JLabel title = new JLabel("Soccer Simulator");
 		JButton play = new JButton("Play");
 		JButton create = new JButton("Create");
 		JButton playerCatalog = new JButton("Player Catalog");
+		panel.setLayout(null);
 		
-		frame.add(play);
-		frame.add(create);
-		frame.add(playerCatalog);
-		frame.add(title);
+		panel.add(play);
+		panel.add(create);
+		panel.add(playerCatalog);
+		panel.add(title);
 		
 		
 		play.setBounds(75, 250, 150, 50);
@@ -42,10 +47,12 @@ public class MainMenu extends JFrame{
 		playerCatalog.setBounds(175, 375, 150, 50);
 		title.setPreferredSize(FONT_SIZE);
 		title.setBounds(200, 25, 100, 50);
+		frame.setContentPane(new PlayMenu()); 
+		frame.pack();
+		//frame.getContentPane().add(new PlayMenu());
 	}
 	public static void main(String[] args) {
 		MainMenu main = new MainMenu();
-		//setDesign();
 	}
 	
 	private final static void setDesign(){

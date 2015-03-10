@@ -1,5 +1,7 @@
 package UI;
 
-public class Catalog {
+import javax.swing.JPanel;
+
+public class Catalog extends JPanel {
 
 }
