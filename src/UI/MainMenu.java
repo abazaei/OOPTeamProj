@@ -4,6 +4,8 @@ import java.awt.Color;
 
 import javax.swing.JFrame;
 
+import xmlstuff.XMLManager;
+
 
 
 public class MainMenu extends JFrame{
@@ -17,7 +19,7 @@ public class MainMenu extends JFrame{
 	}
 
 	public static void main(String[] args) {
-		
+	
 	}
 
 }
