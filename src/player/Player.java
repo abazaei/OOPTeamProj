@@ -9,11 +9,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class Player {
+	
 	private String name;
 	private int age;
+	private Position position;
+	
 
 	HashMap hash = new HashMap();
-	
 	
 	public Player() {
 		
@@ -33,6 +35,12 @@ public class Player {
 	}
 	public int getAge(){
 		return age;
+	}
+	public Position getPosition() {
+		return position;
+	}
+	public void setPosition(Position position) {
+		this.position = position;
 	}
 
 }

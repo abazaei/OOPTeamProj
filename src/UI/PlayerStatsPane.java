@@ -15,8 +15,9 @@ public class PlayerStatsPane extends JPanel{
 	public PlayerStatsPane(Player player){
 		PlayerStatsPane pane = new PlayerStatsPane(player);
 		
-		JLabel title = new JLabel("Player Stats");
-		JLabel name = new JLabel("Will be Player Name");
+		JLabel title = new JLabel(player.getName());
+		JLabel position = new JLabel("Position played: " + player.getPosition());
+		JLabel age = new JLabel("Player age: " + player.getAge());
 		
 			
 		
