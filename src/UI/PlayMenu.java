@@ -6,6 +6,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.LayoutManager;
 
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -16,8 +17,8 @@ public class PlayMenu extends JPanel{
 	
 	private static final int WIDTH = 500;
 	private static final int HEIGHT = 600;
-	public String[] tits = {
-			"empty","tits","tits2","tits3"
+	public String[] bits = {
+			"empty","bits","bits2","bits3"
 	};
 	
 	public PlayMenu(){
@@ -26,8 +27,10 @@ public class PlayMenu extends JPanel{
 		setDesign();
 		this.setLayout(new GridLayout());
 		
-		JComboBox team1 = new JComboBox(tits);
-		JComboBox team2 = new JComboBox(tits);
+		
+		JComboBox team1 = new JComboBox(bits);
+		@SuppressWarnings("unchecked")
+		JComboBox team2 = new JComboBox(bits);
 		JLabel title = new JLabel("Play Page");
 		JLabel O1 = new JLabel(team1.getSelectedItem() + "'s Offensive score: " + 5);
 		JLabel O2 = new JLabel(team2.getSelectedItem() + "'s Offensive score: " + 5);
@@ -37,6 +40,7 @@ public class PlayMenu extends JPanel{
 		JLabel D2 = new JLabel(team2.getSelectedItem() + "'s Defensive score: " + 5);
 		JLabel Total1 = new JLabel(team1.getSelectedItem() + "'s Total score: " + 5);
 		JLabel Total2 = new JLabel(team2.getSelectedItem() + "'s Total score: " + 5);
+		JButton run = new JButton("Run Simulation");
 		
 		this.add(team1);
 		this.add(team2);
@@ -49,6 +53,7 @@ public class PlayMenu extends JPanel{
 		this.add(D2);
 		this.add(Total1);
 		this.add(Total2);
+		this.add(run);
 		
 		title.setBounds(100,200,100,45);
 		setFocusable(true);
