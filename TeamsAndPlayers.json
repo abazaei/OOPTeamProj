@@ -1,2 +1,12 @@
-{"FC Barcelona":{
- ""}}
+{
+	"Teams":
+		{
+			"FC Barcelona":{
+				"Stegen":{
+					"age" : "22",
+					"reaction" : "80"
+				}	
+			},
+			"Real Madrid": "team2"
+		}
+}
