@@ -25,7 +25,7 @@ public class PlayMenu extends JPanel{
 		
 		JPanel playMenu = new JPanel();
 		setDesign();
-		this.setLayout(new GridLayout());
+		this.setLayout(null);
 		
 		
 		JComboBox team1 = new JComboBox(bits);
@@ -41,6 +41,7 @@ public class PlayMenu extends JPanel{
 		JLabel Total1 = new JLabel(team1.getSelectedItem() + "'s Total score: " + 5);
 		JLabel Total2 = new JLabel(team2.getSelectedItem() + "'s Total score: " + 5);
 		JButton run = new JButton("Run Simulation");
+		this.setPreferredSize(new Dimension(WIDTH,HEIGHT));
 		
 		this.add(team1);
 		this.add(team2);
@@ -55,7 +56,21 @@ public class PlayMenu extends JPanel{
 		this.add(Total2);
 		this.add(run);
 		
-		title.setBounds(100,200,100,45);
+		title.setBounds(225,50,100,45);
+		team1.setBounds(75, 100, 150, 35);
+		O1.setBounds(75, 150, 150, 35);
+		M1.setBounds(75, 200, 150, 35);
+		D1.setBounds(75, 250, 150, 35);
+		Total1.setBounds(75, 300, 150, 35);
+		team2.setBounds(275, 100, 150, 35);
+		O2.setBounds(275, 150, 150, 35);
+		M2.setBounds(275, 200, 150, 35);
+		D2.setBounds(275, 250, 150, 35);
+		Total2.setBounds(275, 300, 150, 35);
+		run.setBounds(150, 400, 200, 100);
+		
+		
+		
 		setFocusable(true);
 		
 		this.setBackground(Color.WHITE);
