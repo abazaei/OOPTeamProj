@@ -18,7 +18,7 @@ public class MainMenu extends JFrame{
 
 	private static final int WIDTH = 500;
 	private static final int HEIGHT = 600;
-	private static final Dimension FONT_SIZE = new Dimension(15,15);
+	private static final Dimension DIMENSION = new Dimension(WIDTH,HEIGHT);
 
 	public MainMenu() {
 		JFrame frame = new JFrame();
@@ -35,6 +35,7 @@ public class MainMenu extends JFrame{
 		JButton create = new JButton("Create");
 		JButton playerCatalog = new JButton("Player Catalog");
 		panel.setLayout(null);
+		panel.setPreferredSize(DIMENSION);
 		
 		panel.add(play);
 		panel.add(create);
@@ -45,7 +46,7 @@ public class MainMenu extends JFrame{
 		play.setBounds(75, 250, 150, 50);
 		create.setBounds(275, 250, 150, 50);
 		playerCatalog.setBounds(175, 375, 150, 50);
-		title.setPreferredSize(FONT_SIZE);
+		//title.setPreferredSize(FONT_SIZE);
 		title.setBounds(200, 25, 100, 50);
 		frame.setContentPane(panel); 
 		frame.pack();
