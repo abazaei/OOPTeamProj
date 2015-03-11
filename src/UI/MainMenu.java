@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-import xmlstuff.XMLManager;
+import JSONstuff.JSONManager;
 
 
 
