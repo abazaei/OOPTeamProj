@@ -14,6 +14,7 @@ import javax.swing.JTabbedPane;
 
 public class Catalog extends JPanel {
 
+	
 
 	public  Catalog(){
 
@@ -26,14 +27,17 @@ public class Catalog extends JPanel {
 		teamBox.setSelectedItem(6);
 		JLabel title = new JLabel(" Player Catalog");
 		JLabel teams = new JLabel(  " Our Teams ");
-		this.setPreferredSize(new Dimension(500,600));
+		JLabel players = new JLabel("Players: ");
+		this.setPreferredSize(new Dimension(PlayMenu.WIDTH,PlayMenu.HEIGHT));
 		this.add(teamBox);
 		this.add(title);
 		this.add(teams);
+		this.add(players);
 		
-		title.setBounds(850,50,100,45);
-		teamBox.setBounds(800,100,100,45);
-		teams.setBounds(725,100,100,45);
+		title.setBounds(200,10,100,45);
+		teamBox.setBounds(180,70,100,45);
+		teams.setBounds(100,70,100,45);
+		players.setBounds(100,150,100,45);
 		
 
 	}

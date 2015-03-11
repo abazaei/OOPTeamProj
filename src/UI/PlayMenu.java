@@ -15,8 +15,8 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 public class PlayMenu extends JPanel{
 	
-	private static final int WIDTH = 500;
-	private static final int HEIGHT = 600;
+	protected static final int WIDTH = 500;
+	protected static final int HEIGHT = 600;
 	public String[] bits = {
 			"empty","bits","bits2","bits3"
 	};
