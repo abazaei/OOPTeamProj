@@ -2,6 +2,8 @@ package UI;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -19,6 +21,8 @@ public class MainMenu extends JFrame{
 	private static final int WIDTH = 500;
 	private static final int HEIGHT = 600;
 	private static final Dimension DIMENSION = new Dimension(WIDTH,HEIGHT);
+	private playListener plistener = new playListener();
+	private catalogListener clistener = new catalogListener();
 
 	public MainMenu() {
 		JFrame frame = new JFrame();
@@ -37,6 +41,9 @@ public class MainMenu extends JFrame{
 		panel.setLayout(null);
 		panel.setPreferredSize(DIMENSION);
 		
+		play.addActionListener(plistener);
+		playerCatalog.addActionListener(clistener);
+		
 		panel.add(play);
 		panel.add(create);
 		panel.add(playerCatalog);
@@ -48,7 +55,7 @@ public class MainMenu extends JFrame{
 		playerCatalog.setBounds(175, 375, 150, 50);
 		//title.setPreferredSize(FONT_SIZE);
 		title.setBounds(200, 25, 100, 50);
-		frame.setContentPane(new PlayMenu()); 
+		frame.setContentPane(panel); 
 		frame.pack();
 		//frame.getContentPane().add(new PlayMenu());
 	}
@@ -64,6 +71,40 @@ public class MainMenu extends JFrame{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	private class playListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			JFrame frame = new JFrame();
+			setDesign();
+			frame.setSize(WIDTH,HEIGHT);
+			frame.setVisible(true);
+			frame.setContentPane(new PlayMenu());
+			frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+			frame.setLayout(null);
+			frame.pack();
+			
+		}
+		
+	}
+	
+	private class catalogListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			JFrame frame = new JFrame();
+			setDesign();
+			frame.setSize(WIDTH,HEIGHT);
+			frame.setVisible(true);
+			frame.setContentPane(new Catalog());
+			frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+			frame.setLayout(null);
+			frame.pack();
+			
+		}
+		
 	}
 
 }

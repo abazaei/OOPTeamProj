@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.LayoutManager;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -20,57 +22,35 @@ public class PlayMenu extends JPanel{
 	public String[] bits = {
 			"empty","bits","bits2","bits3"
 	};
+	JComboBox team1 = new JComboBox(bits);
+	@SuppressWarnings("unchecked")
+	JComboBox team2 = new JComboBox(bits);
+	JPanel playMenu = new JPanel();
+	Boolean filled = false;
 	
 	public PlayMenu(){
 		
-		JPanel playMenu = new JPanel();
+		
 		setDesign();
 		this.setLayout(null);
-		
-		
-		JComboBox team1 = new JComboBox(bits);
-		@SuppressWarnings("unchecked")
-		JComboBox team2 = new JComboBox(bits);
+				
 		JLabel title = new JLabel("Play Page");
-		JLabel O1 = new JLabel(team1.getSelectedItem() + "'s Offensive score: " + 5);
-		JLabel O2 = new JLabel(team2.getSelectedItem() + "'s Offensive score: " + 5);
-		JLabel M1 = new JLabel(team1.getSelectedItem() + "'s Mid score: " + 5);
-		JLabel M2 = new JLabel(team2.getSelectedItem() + "'s Mid score: " + 5);
-		JLabel D1 = new JLabel(team1.getSelectedItem() + "'s Defensive score: " + 5);
-		JLabel D2 = new JLabel(team2.getSelectedItem() + "'s Defensive score: " + 5);
-		JLabel Total1 = new JLabel(team1.getSelectedItem() + "'s Total score: " + 5);
-		JLabel Total2 = new JLabel(team2.getSelectedItem() + "'s Total score: " + 5);
+		
 		JButton run = new JButton("Run Simulation");
 		this.setPreferredSize(new Dimension(WIDTH,HEIGHT));
-		
+				
+		this.add(title);
+		this.add(run);
 		this.add(team1);
 		this.add(team2);
-		this.add(title);
-		this.add(O1);
-		this.add(O2);
-		this.add(M1);
-		this.add(M2);
-		this.add(D1);
-		this.add(D2);
-		this.add(Total1);
-		this.add(Total2);
-		this.add(run);
+		team1.addActionListener(new listener());
+		team2.addActionListener(new listener());
 		
-		title.setBounds(225,50,100,45);
 		team1.setBounds(75, 100, 150, 35);
-		O1.setBounds(75, 150, 150, 35);
-		M1.setBounds(75, 200, 150, 35);
-		D1.setBounds(75, 250, 150, 35);
-		Total1.setBounds(75, 300, 150, 35);
 		team2.setBounds(275, 100, 150, 35);
-		O2.setBounds(275, 150, 150, 35);
-		M2.setBounds(275, 200, 150, 35);
-		D2.setBounds(275, 250, 150, 35);
-		Total2.setBounds(275, 300, 150, 35);
+		title.setBounds(225,50,100,45);
 		run.setBounds(150, 400, 200, 100);
-		
-		
-		
+				
 		setFocusable(true);
 		
 		this.setBackground(Color.WHITE);
@@ -86,6 +66,59 @@ public class PlayMenu extends JPanel{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	private class listener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			
+			JLabel O1 = new JLabel(team1.getSelectedItem() + "'s Offensive score: " + 5);
+			JLabel O2 = new JLabel(team2.getSelectedItem() + "'s Offensive score: " + 5);
+			JLabel M1 = new JLabel(team1.getSelectedItem() + "'s Mid score: " + 5);
+			JLabel M2 = new JLabel(team2.getSelectedItem() + "'s Mid score: " + 5);
+			JLabel D1 = new JLabel(team1.getSelectedItem() + "'s Defensive score: " + 5);
+			JLabel D2 = new JLabel(team2.getSelectedItem() + "'s Defensive score: " + 5);
+			JLabel Total1 = new JLabel(team1.getSelectedItem() + "'s Total score: " + 5);
+			JLabel Total2 = new JLabel(team2.getSelectedItem() + "'s Total score: " + 5);
+						
+			if(filled == true){
+				remove(O1);
+				remove(O2);
+				remove(M1);
+				remove(M2);
+				remove(D1);
+				remove(D2);
+				remove(Total1);
+				remove(Total2);
+				filled = false;
+			}
+			
+			
+			add(O1);
+			add(O2);
+			add(M1);
+			add(M2);
+			add(D1);
+			add(D2);
+			add(Total1);
+			add(Total2);
+			filled = true;
+			
+					
+			O1.setBounds(75, 150, 150, 35);
+			M1.setBounds(75, 200, 150, 35);
+			D1.setBounds(75, 250, 150, 35);
+			Total1.setBounds(75, 300, 150, 35);
+			O2.setBounds(275, 150, 150, 35);
+			M2.setBounds(275, 200, 150, 35);
+			D2.setBounds(275, 250, 150, 35);
+			Total2.setBounds(275, 300, 150, 35);
+			
+			
+		}
+		
 	}
 
 }

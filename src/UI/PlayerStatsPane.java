@@ -42,20 +42,7 @@ public class PlayerStatsPane extends JPanel{
 		}
 	}
 
-	private void setStats(Forward player,JPanel pane){
-		if(player.getPosition() == Position.FORWARD){
-		JLabel dribbling = new JLabel("stuf" + player.getForward());
-		dribbling.setBounds(x, y, width, height);
-		pane.add(dribbling);
-		}
-		else if(player.getPosition() == Position.DEFENDER){
-			
-		}
-		else  if(player.getPosition() == Position.KEEPER){
-			
-		}
-		else if(player.getPosition() == Position.MID){
-				
-			}
+	private void setStats(Player player,JPanel pane){
+		
 	}
 }
