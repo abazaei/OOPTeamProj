@@ -3,6 +3,10 @@ package JSONstuff;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import com.google.gson.*;
 
@@ -33,11 +37,9 @@ public class JSONManager{
 		rootarray = root.getAsJsonObject(); //rootarray now = teams array
 		teams = rootarray.get("Teams").getAsJsonObject();
 		teamname = teams.get("FC Barcelona").getAsJsonObject();
-		player = teamname.getAsJsonObject("Stegen");
+		player = teamname.getAsJsonObject("Bravo");
 		System.out.println(player.get("age").getAsString());
 		
 		
-		
 	}
-
 }

@@ -48,12 +48,13 @@ public class MainMenu extends JFrame{
 		playerCatalog.setBounds(175, 375, 150, 50);
 		//title.setPreferredSize(FONT_SIZE);
 		title.setBounds(200, 25, 100, 50);
-		frame.setContentPane(new Catalog()); 
+		frame.setContentPane(panel); 
 		frame.pack();
 		//frame.getContentPane().add(new PlayMenu());
 	}
 	public static void main(String[] args) {
-		MainMenu main = new MainMenu();
+		//MainMenu main = new MainMenu();
+		new JSONManager();
 	}
 	
 	private final static void setDesign(){
