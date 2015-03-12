@@ -60,7 +60,8 @@ public class MainMenu extends JFrame{
 		//frame.getContentPane().add(new PlayMenu());
 	}
 	public static void main(String[] args) {
-		MainMenu main = new MainMenu();
+		//MainMenu main = new MainMenu();
+		new JSONManager();
 	}
 	
 	private final static void setDesign(){
