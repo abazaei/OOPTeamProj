@@ -13,7 +13,8 @@ import javax.swing.JTabbedPane;
 
 
 public class Catalog extends JPanel {
-
+	
+	public String [] teamNames = { "FC Barc", "Liverpool", "Man U", "Bayer Munchen"};
 
 	public  Catalog(){
 
@@ -22,18 +23,21 @@ public class Catalog extends JPanel {
 		JPanel panel = new JPanel();
 		this.setLayout(null);
 		
-		JComboBox teamBox = new JComboBox();
+		JComboBox teamBox = new JComboBox(teamNames);
 		teamBox.setSelectedItem(6);
 		JLabel title = new JLabel(" Player Catalog");
-		JLabel teams = new JLabel(  " Our Teams ");
+		JLabel teams = new JLabel(" Selected Team ");
+		JLabel players = new JLabel("Players: ");
 		this.setPreferredSize(new Dimension(500,600));
 		this.add(teamBox);
 		this.add(title);
 		this.add(teams);
+		this.add(players);
 		
-		title.setBounds(850,50,100,45);
-		teamBox.setBounds(800,100,100,45);
-		teams.setBounds(725,100,100,45);
+		title.setBounds(200,10,100,45);
+		teamBox.setBounds(180,70,100,45);
+		teams.setBounds(100,70,100,45);
+		players.setBounds(100,150,100,45);
 		
 
 	}

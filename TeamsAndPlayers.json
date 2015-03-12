@@ -1,2 +1,85 @@
-{"FC Barcelona":{
- ""}}
+{
+	"Teams":
+		{
+			"FC Barcelona":{
+				"Bravo":{
+					"age" : "32",
+					"nationality" : "Chile",
+					"club" : "FC Barcelona",
+					"position": "Goalkeeper",
+					"overall" : "83"
+				},
+				"Montoya":{
+					"age" : "24",
+					"nationality" : "Spain",
+					"club" : "FC Barcelona",
+					"position" : "Defender",
+					"overall" : "77"
+				},
+				"Pique":{
+					"age" : "28",
+					"nationality" : "Spain",
+					"club" : "Barcelona",
+					"position" : "Defender",
+					"overall" : "84"
+				},
+				"Rakitic":{
+					"age" : "27",
+					"nationality" : "Croatia",
+					"club" : "Barcelona",
+					"position" : "Midfielder",
+					"overall" : "83"
+				},
+				"Busquets":{
+					"age" : "27",
+					"nationality" : "Spain",
+					"club" : "Barcelona",
+					"position" : "Midfielder",
+					"overall" : "86"
+				},
+				"Xavi":{
+					"age" : "35",
+					"nationality" : "Spain",
+					"club" : "Barcelona",
+					"position" : "Midfielder",
+					"overall" : "86"
+				},
+				"Iniesta":{
+					"age" : "31",
+					"nationality" : "Spain",
+					"club" : "Barcelona",
+					"position" : "Midfielder",
+					"overall" : ""
+				},
+				"Pedro":{
+					"age" : "28",
+					"nationality" : "Spain",
+					"club" : "Barcelona",
+					"position" : "Forward",
+					"overall" : "83"
+				},	
+				"Suarez":{
+					"age" : "28",
+					"nationality" : "Uruguay",
+					"club" : "Barcelona",
+					"position" : "Forward",
+					"overall" : "89"
+				},				
+				"Messi":{
+					"age" : "28",
+					"nationality" : "Argentina",
+					"club" : "Barcelona",
+					"position" : "Forward",
+					"overall" : "93"
+				},
+				"Neymar":{
+					"age" : "23",
+					"nationality" : "Brazil",
+					"club" : "Barcelona",
+					"position" : "Forward",
+					"overall" : "87"
+				}				
+			},
+			"Real Madrid": "team2"
+		}
+}
