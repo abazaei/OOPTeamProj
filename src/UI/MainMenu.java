@@ -48,7 +48,7 @@ public class MainMenu extends JFrame{
 		playerCatalog.setBounds(175, 375, 150, 50);
 		//title.setPreferredSize(FONT_SIZE);
 		title.setBounds(200, 25, 100, 50);
-		frame.setContentPane(new Catalog()); 
+		frame.setContentPane(new PlayMenu()); 
 		frame.pack();
 		//frame.getContentPane().add(new PlayMenu());
 	}
