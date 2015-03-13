@@ -25,7 +25,7 @@ public class PlayerStatsPane extends JPanel{
 		JLabel title = new JLabel(player.getName());
 		JLabel position = new JLabel("Position played: " + player.getPosition().toString());
 		JLabel age = new JLabel("Player age: " + player.getAge());
-		setStats(player, pane);
+		//setStats(player, pane);
 
 
 
@@ -45,7 +45,7 @@ public class PlayerStatsPane extends JPanel{
 	private void setStats(Forward player,JPanel pane){
 		if(player.getPosition() == Position.FORWARD){
 		JLabel dribbling = new JLabel("stuf" + player.getForward());
-		dribbling.setBounds(x, y, width, height);
+		//dribbling.setBounds(x, y, width, height);
 		pane.add(dribbling);
 		}
 		else if(player.getPosition() == Position.DEFENDER){
