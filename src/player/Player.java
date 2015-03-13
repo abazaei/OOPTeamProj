@@ -13,6 +13,8 @@ public class Player {
 	private String name;
 	private int age;
 	private Position position;
+	private String club;
+	private String nationality;
 	
 
 	HashMap hash = new HashMap();
