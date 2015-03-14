@@ -19,17 +19,12 @@ public class PlayerStatsPane extends JPanel{
 	//protected Player chosenPlayer = null;
 
 	public PlayerStatsPane(Player player){
-		//	chosenPlayer = player;
+		
 		PlayerStatsPane pane = new PlayerStatsPane(player);
-
 		JLabel title = new JLabel(player.getName());
 		JLabel position = new JLabel("Position played: " + player.getPosition().toString());
 		JLabel age = new JLabel("Player age: " + player.getAge());
 		setStats(player, pane);
-
-
-
-
 	}
 
 	private final static void setDesign(){
@@ -37,7 +32,7 @@ public class PlayerStatsPane extends JPanel{
 			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 		} catch (ClassNotFoundException | InstantiationException
 				| IllegalAccessException | UnsupportedLookAndFeelException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
