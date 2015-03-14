@@ -31,26 +31,32 @@ public class JSONManager{
 
 
 	public JSONManager(){
-		try {
-			breader = new BufferedReader(new FileReader("TeamsAndPlayers.json"));
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		root = parser.parse(breader);
-		rootarray = root.getAsJsonObject(); //rootarray now = teams array
-		teams = rootarray.get("Teams").getAsJsonObject();
-		teamname = teams.get("FC Barcelona").getAsJsonObject();
-		player = teamname.getAsJsonObject("Bravo");
-		System.out.println(player.get("age").getAsString());
+//		try {
+//			breader = new BufferedReader(new FileReader("TeamsAndPlayers.json"));
+//		} catch (FileNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		root = parser.parse(breader);
+//		rootarray = root.getAsJsonObject(); //rootarray now = teams array
+//		teams = rootarray.get("Teams").getAsJsonObject();
+//		teamname = teams.get("FC Barcelona").getAsJsonObject();
+//		player = teamname.getAsJsonObject("Bravo");
+//		System.out.println(player.get("age").getAsString());
 
 		JSONIterator();
 
 
 	}
 	public void JSONIterator(){
+		try {
+		breader = new BufferedReader(new FileReader("TeamsAndPlayers.json"));
+	} catch (FileNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 		 try {
-             JSONObject root = new JSONObject("TeamsAndPlayers.json");
+             JSONObject root = new JSONObject(breader);
              JSONObject team = root.getJSONObject("Teams").getJSONObject("FC Barcelona");
              Iterator keys =  team.keys(); 
 
@@ -58,11 +64,12 @@ public class JSONManager{
              while (keys.hasNext()){
                  JSONObject obj = team.getJSONObject((String)keys.next());
                  String age = obj.getString("age");
+                 System.out.println(age);
              }
 
 
-         } catch (JSONException e) {
-             e.printStackTrace();
+         } catch (JSONException e1) {
+             e1.printStackTrace();
          }
 	}
 }
