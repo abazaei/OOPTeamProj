@@ -12,9 +12,6 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-import JSONstuff.JSONManager;
-
-
 
 public class MainMenu extends JFrame{
 
@@ -57,8 +54,7 @@ public class MainMenu extends JFrame{
 
 	}
 	public static void main(String[] args) {
-		//MainMenu main = new MainMenu();
-		new JSONManager();
+		MainMenu main = new MainMenu();
 	}
 
 	private final static void setDesign(){
