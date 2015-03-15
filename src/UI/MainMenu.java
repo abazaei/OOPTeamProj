@@ -57,8 +57,8 @@ public class MainMenu extends JFrame{
 
 	}
 	public static void main(String[] args) {
-		MainMenu main = new MainMenu();
-		//new JSONManager();
+		//MainMenu main = new MainMenu();
+		new JSONManager();
 	}
 
 	private final static void setDesign(){

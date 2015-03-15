@@ -13,6 +13,7 @@ import com.google.gson.*;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONStringer;
 
 public class JSONManager{
 
@@ -20,7 +21,7 @@ public class JSONManager{
 	BufferedReader breader;
 
 	JsonParser parser = new JsonParser();
-	JsonElement root;
+	JSONObject root;
 	JsonObject rootarray;
 	JsonObject teams;
 	JsonObject teamname;
@@ -56,7 +57,7 @@ public class JSONManager{
 		e.printStackTrace();
 	}
 		 try {
-             JSONObject root = new JSONObject(breader);
+             JSONObject root = parser.parse(breader);
              JSONObject team = root.getJSONObject("Teams").getJSONObject("FC Barcelona");
              Iterator keys =  team.keys(); 
 
