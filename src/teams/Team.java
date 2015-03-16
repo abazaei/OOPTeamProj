@@ -13,6 +13,7 @@ public class Team {
 	static Player [] Barcelona = new Player [TEAMSIZE];
 	static Player [] RealMadrid = new Player [TEAMSIZE];
 	static Player [] PSG = new Player[TEAMSIZE];
+	static Player [] Chelsea = new Player[TEAMSIZE];
 	
 	public Team()
 	{
@@ -54,6 +55,20 @@ public class Team {
 		PSG[8] = new Player("Lavezzi",82,30,"Forward","Paris Saint-Germain F.C.","Argentina");
 		PSG[9] = new Player("Ibrahimovic",91,34,"Forward","Paris Saint-Germain F.C.","Sweden");
 		PSG[10] = new Player("Cavani",86,28,"Forward","Paris Saint-Germain F.C.","Uruguay");
+		
+		//Chelsea
+		Chelsea[0] = new Player("Courtois",86,23,"Goalie","Chelsea","Belgium");
+		Chelsea[1] = new Player("Azpilicueta",81,31,"Defender","Chelsea","Spain");
+		Chelsea[2] = new Player("Terry",84,28,"Defender","Chelsea","England");
+		Chelsea[3] = new Player("Cahill",81,27,"Defender","Chelsea","England");
+		Chelsea[4] = new Player("Luis",82,30,"Defender","Chelsea","Brazil");
+		Chelsea[5] = new Player("Willian",83,33,"Midfielder","Chelsea","Brazil");
+		Chelsea[6] = new Player("Matic",82,26,"Midfielder","Chelsea","Serbia");
+		Chelsea[7] = new Player("Fabregas",85,23,"Midfielder","Chelsea","Spain");
+		Chelsea[8] = new Player("Hazard",88,24,"Midfielder","Chelsea","Belgium");
+		Chelsea[9] = new Player("Oscar",85,24,"Forward","Chelsea","Brazil");
+		Chelsea[10] = new Player("Costa",89,27,"Forward","Chelsea","Spain");
+		
 	}
 
 		
