@@ -55,6 +55,19 @@ public class MainMenu extends JFrame{
 	}
 	public static void main(String[] args) {
 		MainMenu main = new MainMenu();
+		
+		long lastSec = 0;
+		while(true)
+		{
+		    long sec = System.currentTimeMillis() / 1000;
+		    if (sec != lastSec)
+		    {
+		       System.out.println(sec);
+		       lastSec = sec;
+		    }
+		    
+		}
+
 	}
 
 	private final static void setDesign(){
