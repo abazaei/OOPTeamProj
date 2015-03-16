@@ -15,22 +15,24 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+import teams.Team;
+
 public class PlayMenu extends JPanel{
 	
 	private static final int WIDTH = 500;
 	private static final int HEIGHT = 600;
-	public String[] bits = {
-			"empty","bits","bits2","bits3"
+	private Team team = new Team();
+	public String[] teams = {
+			team.Barcelona[0].getClub(), team.PSG[0].getClub(), team.RealMadrid[0].getClub()
 	};
-	JComboBox team1 = new JComboBox(bits);
+	JComboBox team1 = new JComboBox(teams);
 	@SuppressWarnings("unchecked")
-	JComboBox team2 = new JComboBox(bits);
+	JComboBox team2 = new JComboBox(teams);
 	JPanel playMenu = new JPanel();
 	Boolean filled = false;
 	
 	public PlayMenu(){
-		
-		
+			
 		setDesign();
 		this.setLayout(null);
 				
@@ -69,11 +71,9 @@ public class PlayMenu extends JPanel{
 	}
 	
 	private class listener implements ActionListener{
-
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			
-			
+						
 			JLabel O1 = new JLabel(team1.getSelectedItem() + "'s Offensive score: " + 5);
 			JLabel O2 = new JLabel(team2.getSelectedItem() + "'s Offensive score: " + 5);
 			JLabel M1 = new JLabel(team1.getSelectedItem() + "'s Mid score: " + 5);
@@ -82,20 +82,7 @@ public class PlayMenu extends JPanel{
 			JLabel D2 = new JLabel(team2.getSelectedItem() + "'s Defensive score: " + 5);
 			JLabel Total1 = new JLabel(team1.getSelectedItem() + "'s Total score: " + 5);
 			JLabel Total2 = new JLabel(team2.getSelectedItem() + "'s Total score: " + 5);
-						
-			
-				remove(O1);
-				remove(O2);
-				remove(M1);
-				remove(M2);
-				remove(D1);
-				remove(D2);
-				remove(Total1);
-				remove(Total2);
-				filled = false;
-			
-			
-			
+							
 			add(O1);
 			add(O2);
 			add(M1);
@@ -105,8 +92,7 @@ public class PlayMenu extends JPanel{
 			add(Total1);
 			add(Total2);
 			filled = true;
-			
-					
+								
 			O1.setBounds(75, 150, 150, 35);
 			M1.setBounds(75, 200, 150, 35);
 			D1.setBounds(75, 250, 150, 35);
@@ -116,9 +102,6 @@ public class PlayMenu extends JPanel{
 			D2.setBounds(275, 250, 150, 35);
 			Total2.setBounds(275, 300, 150, 35);
 			
-			
 		}
-		
 	}
-
 }
