@@ -73,8 +73,9 @@ public class PlayMenu extends JPanel{
 	private class listener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			
 						
-			JLabel O1 = new JLabel(team1.getSelectedItem() + "'s Offensive score: " + 5);
+			JLabel O1 = new JLabel(team1.getSelectedItem() + "'s Offensive score: " + );
 			JLabel O2 = new JLabel(team2.getSelectedItem() + "'s Offensive score: " + 5);
 			JLabel M1 = new JLabel(team1.getSelectedItem() + "'s Mid score: " + 5);
 			JLabel M2 = new JLabel(team2.getSelectedItem() + "'s Mid score: " + 5);
