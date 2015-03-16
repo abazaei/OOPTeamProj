@@ -22,9 +22,19 @@ public class PlayerStatsPane extends JPanel{
 		
 		PlayerStatsPane pane = new PlayerStatsPane(player);
 		JLabel title = new JLabel(player.getName());
-		JLabel position = new JLabel("Position played: " + player.getPosition().toString());
+		JLabel position = new JLabel("Position played: " + player.getPosition().getPosition());
 		JLabel age = new JLabel("Player age: " + player.getAge());
-		setStats(player, pane);
+		JLabel skill = new JLabel("Player skill: " + player.getSkill());
+		JLabel club = new JLabel("Player club: " + player.getClub());
+		JLabel nationality = new JLabel("Player nationality: " + player.getNationality());
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 
 	private final static void setDesign(){
@@ -36,8 +46,5 @@ public class PlayerStatsPane extends JPanel{
 			e.printStackTrace();
 		}
 	}
-
-	private void setStats(Player player,JPanel pane){
-		
-	}
+	
 }
