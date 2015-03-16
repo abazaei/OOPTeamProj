@@ -6,22 +6,22 @@ import player.Player;
 import player.Position;
 
 public class Team {
-	
+
 	private int OFFENSE;
 	private int MID;
 	private int DEFENSE;
 
 	public static int TEAMSIZE = 11;
-	
+
 	public static Player [] tBarcelona = new Player [TEAMSIZE];
 	public static Player [] tRealMadrid = new Player [TEAMSIZE];
 	public static Player [] tPSG = new Player[TEAMSIZE];
 	public static Player [] tChelsea = new Player[TEAMSIZE];
-	
+
 	public static HashMap<String, Player[]> teams = new HashMap<String, Player[]>();
-	
+
 	public Team(){
-	
+
 		//FC Barcelona
 		tBarcelona[0] = new Player("Bravo", 83, 32, Position.KEEPER,"FC Barcelona", "Chile");
 		tBarcelona[1] = new Player("Montoya", 81, 24, Position.DEFENDER, "FC Barcelona", "Spain"); //ADD BAYERN,CHELSEA
@@ -34,7 +34,7 @@ public class Team {
 		tBarcelona[8] = new Player("Suarez", 92, 27,Position.FORWARD, "FC Barcelona", "Uruguay");
 		tBarcelona[9] = new Player("Messi", 97, 27,Position.FORWARD, "FC Barcelona", "Argentina");
 		tBarcelona[10] = new Player("Neymar", 91, 22,Position.FORWARD, "FC Barcelona", "Brazil");
-		
+
 		//Real Madrid
 		tRealMadrid[0] = new Player("Casillas", 84, 33, Position.KEEPER, "Real Madrid", "Spain");
 		tRealMadrid[1] = new Player("Varane", 83, 21, Position.DEFENDER, "Real Madrid", "France");
@@ -47,7 +47,7 @@ public class Team {
 		tRealMadrid[8] = new Player("Benzema", 89, 26, Position.FORWARD, "Real Madrid", "France");
 		tRealMadrid[9] = new Player("Rodriguez", 86, 23, Position.MID, "Real Madrid", "Spain");
 		tRealMadrid[10] = new Player("Bale", 89, 25, Position.MID, "Real Madrid", "Wale");
-		
+
 		//PSG
 		tPSG[0] = new Player("Sirigu",84,28,Position.KEEPER,"Paris Saint-Germain F.C.","Italy");
 		tPSG[1] = new Player("Silva",91,31,Position.DEFENDER,"Paris Saint-Germain F.C.","Brazil");
@@ -60,7 +60,7 @@ public class Team {
 		tPSG[8] = new Player("Lavezzi",82,30,Position.FORWARD,"Paris Saint-Germain F.C.","Argentina");
 		tPSG[9] = new Player("Ibrahimovic",91,34,Position.FORWARD,"Paris Saint-Germain F.C.","Sweden");
 		tPSG[10] = new Player("Cavani",86,28,Position.FORWARD,"Paris Saint-Germain F.C.","Uruguay");
-		
+
 		//Chelsea
 		tChelsea[0] = new Player("Courtois",86,23,Position.KEEPER,"Chelsea","Belgium");
 		tChelsea[1] = new Player("Azpilicueta",81,31,Position.DEFENDER,"Chelsea","Spain");
@@ -73,19 +73,24 @@ public class Team {
 		tChelsea[8] = new Player("Hazard",88,24,Position.MID,"Chelsea","Belgium");
 		tChelsea[9] = new Player("Oscar",85,24,Position.FORWARD,"Chelsea","Brazil");
 		tChelsea[10] = new Player("Costa",89,27,Position.FORWARD,"Chelsea","Spain");
-		
+
 	}
 
-		
+
 
 	public int getOFFENSE( Player [] team) {
 		int pCounted = 0;
+		int oFFENSE = 0;
 		for(Player p : team){
-			if(p.getPosition()== Position.FORWARD || p.getPosition() == Position.MID);
-			pCounted++;
-			OFFENSE += p.getSkill();
+			if(p.getPosition() == Position.FORWARD){
+				System.out.println(p.getPosition());
+				pCounted++;
+				oFFENSE += p.getSkill();
+			}
 		}
-		return OFFENSE; //math to average for us
+		oFFENSE = oFFENSE/pCounted;
+		System.out.println(oFFENSE);
+		return oFFENSE; //math to average for us
 	}
 
 	public void setOFFENSE(int oFFENSE) {
@@ -94,13 +99,15 @@ public class Team {
 
 	public int getMID(Player [] team) {
 		int pCounted = 0;
+		int mID = 0;
 		for(Player p : team){
-			if( p.getPosition() == Position.MID);
-			pCounted++;
-			MID += p.getSkill();
+			if( p.getPosition() == Position.MID){
+				pCounted++;
+				mID += p.getSkill();
+			}
 		}
-		
-		return MID;
+		mID = mID/pCounted;
+		return mID;
 	}
 
 	public void setMID(int mID) {
@@ -109,25 +116,27 @@ public class Team {
 
 	public int getDEFENSE(Player [] team) {
 		int pCounted = 0;
+		int dEFENSE = 0;
 		for(Player p : team){
-			if( p.getPosition() == Position.MID || p.getPosition() == Position.DEFENDER);
-			pCounted++;
-			DEFENSE += p.getSkill();
+			if(p.getPosition() == Position.DEFENDER){
+				pCounted++;
+				dEFENSE += p.getSkill();
+			}
 		}
-		
-		return DEFENSE;
+		dEFENSE = dEFENSE/pCounted;
+		return dEFENSE;
 	}
 
 	public void setDEFENSE(int dEFENSE) {
 		DEFENSE = dEFENSE;
 	}
-	public void addTeam(){
+	public static void addTeam(){
 		teams.put("Barcelona",tBarcelona );
 		teams.put("RealMadrid", tRealMadrid );
 		teams.put("PSG", tPSG);
 		teams.put("Chelsea", tChelsea);
 	}
-	
-	
+
+
 
 }

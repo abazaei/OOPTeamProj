@@ -4,17 +4,17 @@ public enum Position {
 	FORWARD("Forward"), MID("Midfielder"), DEFENDER("Defender"), KEEPER("Goalie");
 
 
-	protected String position;
+	protected Position position;
 
 	Position(String position){
 		position = position;
 	}
 
-	public String getPosition() {
+	public Position getPosition() {
 		return position;
 	}
 
-	public void setPosition(String position) {
+	public void setPosition(Position position) {
 		this.position = position;
 	}
 	

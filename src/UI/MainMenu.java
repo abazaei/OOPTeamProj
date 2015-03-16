@@ -12,6 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+import teams.Team;
+
 
 public class MainMenu extends JFrame{
 
@@ -55,6 +57,7 @@ public class MainMenu extends JFrame{
 	}
 	public static void main(String[] args) {
 		MainMenu main = new MainMenu();
+		Team.addTeam();
 	}
 
 	private final static void setDesign(){
@@ -75,7 +78,7 @@ public class MainMenu extends JFrame{
 			setDesign();
 			frame.setSize(WIDTH,HEIGHT);
 			frame.setVisible(true);
-			frame.setContentPane(new PlayMenu());
+			frame.setContentPane(new PlayMenu(frame));
 			frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 			frame.setLayout(null);
 			frame.pack();
