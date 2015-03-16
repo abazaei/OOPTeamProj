@@ -46,12 +46,8 @@ public class Catalog extends JPanel {
 
 
 	public class ComboBoxListener implements ActionListener {
+
 		
-
-
-
-
-		@Override
 		public void actionPerformed(ActionEvent e) {
 			JButton button1 = new JButton();
 			JButton button2 = new JButton();

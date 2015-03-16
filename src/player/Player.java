@@ -3,6 +3,8 @@ package player;
 import java.util.HashMap;
 
 
+
+
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -12,15 +14,21 @@ public class Player {
 	
 	private String name;
 	private int age;
-	private Position position;
+	private double skill;
+	private String position;
 	private String club;
 	private String nationality;
 	
 
-	HashMap hash = new HashMap();
 	
-	public Player() {
-		
+	public Player(String n, double sk, int a, String p, String cl, String nat)
+	{
+		name = n;
+		skill = sk;
+		age = a;
+		position = p;
+		club = cl;
+		nationality = nat;
 	}
 	public String getName(){
 		

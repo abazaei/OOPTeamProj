@@ -12,9 +12,6 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-import JSONstuff.JSONManager;
-
-
 
 public class MainMenu extends JFrame{
 
@@ -31,8 +28,7 @@ public class MainMenu extends JFrame{
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		frame.setLayout(null);
-		
-		
+
 		JPanel panel = new JPanel();
 		JLabel title = new JLabel("Soccer Simulator");
 		JButton play = new JButton("Play");
@@ -40,30 +36,27 @@ public class MainMenu extends JFrame{
 		JButton playerCatalog = new JButton("Player Catalog");
 		panel.setLayout(null);
 		panel.setPreferredSize(DIMENSION);
-		
+
 		play.addActionListener(plistener);
 		playerCatalog.addActionListener(clistener);
-		
+
 		panel.add(play);
 		panel.add(create);
 		panel.add(playerCatalog);
 		panel.add(title);
-		
-		
+
 		play.setBounds(75, 250, 150, 50);
 		create.setBounds(275, 250, 150, 50);
 		playerCatalog.setBounds(175, 375, 150, 50);
-		//title.setPreferredSize(FONT_SIZE);
 		title.setBounds(200, 25, 100, 50);
 		frame.setContentPane(panel); 
 		frame.pack();
-		//frame.getContentPane().add(new PlayMenu());
+
 	}
 	public static void main(String[] args) {
-		//MainMenu main = new MainMenu();
-		new JSONManager();
+		MainMenu main = new MainMenu();
 	}
-	
+
 	private final static void setDesign(){
 		try {
 			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -73,7 +66,7 @@ public class MainMenu extends JFrame{
 			e.printStackTrace();
 		}
 	}
-	
+
 	private class playListener implements ActionListener{
 
 		@Override
@@ -86,11 +79,11 @@ public class MainMenu extends JFrame{
 			frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 			frame.setLayout(null);
 			frame.pack();
-			
+
 		}
-		
+
 	}
-	
+
 	private class catalogListener implements ActionListener{
 
 		@Override
@@ -103,9 +96,9 @@ public class MainMenu extends JFrame{
 			frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 			frame.setLayout(null);
 			frame.pack();
-			
+
 		}
-		
+
 	}
 
 }

@@ -83,7 +83,7 @@ public class PlayMenu extends JPanel{
 			JLabel Total1 = new JLabel(team1.getSelectedItem() + "'s Total score: " + 5);
 			JLabel Total2 = new JLabel(team2.getSelectedItem() + "'s Total score: " + 5);
 						
-			if(filled == true){
+			
 				remove(O1);
 				remove(O2);
 				remove(M1);
@@ -93,7 +93,7 @@ public class PlayMenu extends JPanel{
 				remove(Total1);
 				remove(Total2);
 				filled = false;
-			}
+			
 			
 			
 			add(O1);
