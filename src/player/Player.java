@@ -5,23 +5,25 @@ import java.util.HashMap;
 
 
 
+
+
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class Player {
-	
+
 	private String name;
 	private int age;
 	private double skill;
-	private String position;
+	private Position position;
 	private String club;
 	private String nationality;
-	
 
-	
-	public Player(String n, double sk, int a, String p, String cl, String nat)
+
+
+	public Player(String n, double sk, int a, Position p, String cl, String nat)
 	{
 		name = n;
 		skill = sk;
@@ -31,7 +33,6 @@ public class Player {
 		nationality = nat;
 	}
 	public String getName(){
-		
 		return name;
 	}
 	@XmlElement
@@ -40,8 +41,7 @@ public class Player {
 	}
 	@XmlElement
 	public void setAge(int i) {
-		 this.age = i;
-		
+		this.age = i;
 	}
 	public int getAge(){
 		return age;
@@ -52,5 +52,22 @@ public class Player {
 	public void setPosition(Position position) {
 		this.position = position;
 	}
-
+	public double getSkill() {
+		return skill;
+	}
+	public void setSkill(double skill) {
+		this.skill = skill;
+	}
+	public String getClub() {
+		return club;
+	}
+	public void setClub(String club) {
+		this.club = club;
+	}
+	public String getNationality() {
+		return nationality;
+	}
+	public void setNationality(String nationality) {
+		this.nationality = nationality;
+	}
 }

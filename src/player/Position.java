@@ -1,5 +1,13 @@
 package player;
 
 public enum Position {
-	FORWARD, MID, DEFENDER, KEEPER
-}
+	FORWARD("Forward"), MID("Midfielder"), DEFENDER("Defender"), KEEPER("Goalie");
+
+
+	protected String position;
+
+	Position(String position){
+		position = position;
+	}
+
+}	
