@@ -32,17 +32,17 @@ public class Team {
 		Barcelona[10] = new Player("Neymar", 91, 22,Position.FORWARD, "FC Barcelona", "Brazil");
 		
 		//Real Madrid
-		RealMadrid[0] = new Player("Casillas", 84, 33, Position.KEEPER, "FC Barcelona", "Spain");
-		RealMadrid[1] = new Player("Varane", 83, 21, Position.DEFENDER, "FC Barcelona", "France");
-		RealMadrid[2] = new Player("Pepe", 87, 31, Position.DEFENDER, "FC Barcelona", "Portugal");
-		RealMadrid[3] = new Player("Ramos", 86, 28, Position.DEFENDER, "FC Barcelona", "Spain");
-		RealMadrid[4] = new Player("Coentrao", 83, 29,Position.DEFENDER, "FC Barcelona", "Portugal");
-		RealMadrid[5] = new Player("Khedira", 85, 27,Position.MID, "FC Barcelona", "Germany");
-		RealMadrid[6] = new Player("Ronaldo", 97, 29, Position.FORWARD, "FC Barcelona", "Portugal");
-		RealMadrid[7] = new Player("Kroos", 91, 24, Position.MID, "FC Barcelona", "Germany");
-		RealMadrid[8] = new Player("Benzema", 89, 26, Position.FORWARD, "FC Barcelona", "France");
-		RealMadrid[9] = new Player("Rodriguez", 86, 23, Position.MID, "FC Barcelona", "Spain");
-		RealMadrid[10] = new Player("Bale", 89, 25, Position.MID, "FC Barcelona", "Wale");
+		RealMadrid[0] = new Player("Casillas", 84, 33, Position.KEEPER, "Real Madrid", "Spain");
+		RealMadrid[1] = new Player("Varane", 83, 21, Position.DEFENDER, "Real Madrid", "France");
+		RealMadrid[2] = new Player("Pepe", 87, 31, Position.DEFENDER, "Real Madrid", "Portugal");
+		RealMadrid[3] = new Player("Ramos", 86, 28, Position.DEFENDER, "Real Madrid", "Spain");
+		RealMadrid[4] = new Player("Coentrao", 83, 29,Position.DEFENDER, "Real Madrid", "Portugal");
+		RealMadrid[5] = new Player("Khedira", 85, 27,Position.MID, "Real Madrid", "Germany");
+		RealMadrid[6] = new Player("Ronaldo", 97, 29, Position.FORWARD, "Real Madrid", "Portugal");
+		RealMadrid[7] = new Player("Kroos", 91, 24, Position.MID, "Real Madrid", "Germany");
+		RealMadrid[8] = new Player("Benzema", 89, 26, Position.FORWARD, "Real Madrid", "France");
+		RealMadrid[9] = new Player("Rodriguez", 86, 23, Position.MID, "Real Madrid", "Spain");
+		RealMadrid[10] = new Player("Bale", 89, 25, Position.MID, "Real Madrid", "Wale");
 		
 		//PSG
 		PSG[0] = new Player("Sirigu",84,28,Position.KEEPER,"Paris Saint-Germain F.C.","Italy");
