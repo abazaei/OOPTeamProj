@@ -101,8 +101,8 @@ public class PlayMenu extends JPanel{
 			D1.setBounds(75, 250, 150, 35);
 			Total1.setBounds(75, 300, 150, 35);
 //			frame.getRootPane().updateUI();
-			frame.getRootPane().remove(Total1);
-			frame.getRootPane().updateUI();
+//			frame.getRootPane().remove(Total1);
+//			frame.getRootPane().updateUI();
 //			playMenu.removeAll();
 //			revalidate();
 //			repaint();
@@ -116,31 +116,31 @@ public class PlayMenu extends JPanel{
 			System.out.println("TEST: REMOVE");
 			frame.remove(playMenu);
 			frame.validate();
-//			Team t = new Team();
-//
-//			Player[] pa = Team.teams.get(team2.getSelectedItem());
-//			int O = t.getOFFENSE(pa);
-//			int M = t.getMID(pa);
-//			int D = t.getDEFENSE(pa);
-//			int total = (O + M + D)/3;
-//
-//
-//			JLabel O2 = new JLabel("Offensive score: " + O);
-//			JLabel M2 = new JLabel("Mid score: " + M);
-//			JLabel D2 = new JLabel("Defensive score: " + D);
-//			JLabel Total2 = new JLabel("Total score: " + total);
-//
-//			add(O2);
-//			add(M2);
-//			add(D2);
-//			add(Total2);
-//
-//			O2.setBounds(275, 150, 150, 35);
-//			M2.setBounds(275, 200, 150, 35);
-//			D2.setBounds(275, 250, 150, 35);
-//			Total2.setBounds(275, 300, 150, 35);
-//			revalidate();
-//			repaint();
+			Team t = new Team();
+
+			Player[] pa = Team.teams.get(team2.getSelectedItem());
+			int O = t.getOFFENSE(pa);
+			int M = t.getMID(pa);
+			int D = t.getDEFENSE(pa);
+			int total = (O + M + D)/3;
+
+
+			JLabel O2 = new JLabel("Offensive score: " + O);
+			JLabel M2 = new JLabel("Mid score: " + M);
+			JLabel D2 = new JLabel("Defensive score: " + D);
+			JLabel Total2 = new JLabel("Total score: " + total);
+
+			add(O2);
+			add(M2);
+			add(D2);
+			add(Total2);
+
+			O2.setBounds(275, 150, 150, 35);
+			M2.setBounds(275, 200, 150, 35);
+			D2.setBounds(275, 250, 150, 35);
+			Total2.setBounds(275, 300, 150, 35);
+			revalidate();
+			repaint();
 
 		}
 	}
