@@ -57,7 +57,15 @@ public class MainMenu extends JFrame{
 	}
 	public static void main(String[] args) {
 		MainMenu main = new MainMenu();
-		Team.addTeam();
+		while(true) {
+			long millis = System.currentTimeMillis();
+			System.out.println(millis);
+			try {
+				Thread.sleep(1000 - millis % 1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	private final static void setDesign(){
