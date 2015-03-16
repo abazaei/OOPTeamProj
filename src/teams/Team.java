@@ -18,7 +18,7 @@ public class Team {
 	{
 		//FC Barcelona
 		Barcelona[0] = new Player("Bravo", 83, 32, "Goalie","FC Barcelona", "Chile");
-		Barcelona[1] = new Player("Montoya", 81, 24, "Defender", "FC Barcelona", "Spain"); //FINISH AND ADD PSG, BAYERN,CHELSEA
+		Barcelona[1] = new Player("Montoya", 81, 24, "Defender", "FC Barcelona", "Spain"); //ADD BAYERN,CHELSEA
 		Barcelona[2] = new Player("Pique", 87, 28, "Defender", "FC Barcelona", "Spain");
 		Barcelona[3] = new Player("Rakitic", 82, 26,"Midfielder", "FC Barcelona", "Croatia");
 		Barcelona[4] = new Player("Busquets", 84, 26,"Midfielder", "FC Barcelona", "Spain");
