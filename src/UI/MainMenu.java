@@ -16,10 +16,7 @@ import teams.Team;
 
 
 public class MainMenu extends JFrame{
-	
-	public static boolean gameIsPlaying = false;
-	public static int gameTime = 0;
-	public static int gameEnds = 90;
+
 	private static final int WIDTH = 500;
 	private static final int HEIGHT = 600;
 	private static final Dimension DIMENSION = new Dimension(WIDTH,HEIGHT);
@@ -60,22 +57,9 @@ public class MainMenu extends JFrame{
 	}
 	public static void main(String[] args) {
 		MainMenu main = new MainMenu();
+		Team.addTeam();
 		//WHEN PLAY IS PRESSED gameIsPlaying = true;
-		while(gameIsPlaying) {
-			long millis = System.currentTimeMillis();
-			gameTime++; //Seconds in the game passed
-			if(gameTime == gameEnds)
-			{
-				gameIsPlaying = false;
-				//Score Print
-				//Determine Winner in new frame
-			}
-			try {
-				Thread.sleep(1000 - millis % 1000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
+
 	}
 
 	private final static void setDesign(){

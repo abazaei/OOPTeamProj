@@ -23,6 +23,11 @@ import teams.Team;
 
 public class PlayMenu extends JPanel{
 
+	public int foulChanceSetting;
+	public int strikeChanceSetting;
+	public static boolean gameIsPlaying = false;
+	public static int gameTime = 0;
+	public static int gameEnds = 90;
 	public int goalModteam1 = 0;
 	public int goalModteam2 = 0;
 	Random randomn = new Random();
@@ -103,7 +108,24 @@ public class PlayMenu extends JPanel{
 				{
 					//team 2 is trying to score
 					//same as above comments, except use goalModteam2
+					Player scorer = scoreBro(team2);
+					int scoreChance = 0;
+					if(scorer.getSkill() >= team1[0].getSkill()){
+						scoreChance = (int) (goalModteam2 + scorer.getSkill() - (2/5)*team1[0].getSkill());
+					}
+					else if(scorer.getSkill() < team1[0].getSkill()){
+						scoreChance = (int) (goalModteam2 + scorer.getSkill() - (3/4)*team1[0].getSkill());
+					}
+					int score = randomn.nextInt(100);
+					if(score <= scoreChance){
+						System.out.println("Team 2 scored");
+					}
+					else{
+						System.out.println("Team 1 blocked");
+					}
+					
 				}
+			}
 			
 			else if((team.getMID(team2)+team.getOFFENSE(team2))> (team.getMID(team1)+team.getOFFENSE(team1))) // team 2 stats > team 1 stats
 			{
@@ -117,11 +139,41 @@ public class PlayMenu extends JPanel{
 					//if player skill > goalie, goalModteam2 + playerskill - 2/5*goalieskill = chance to score
 					//if player skill < goalie, goalModteam2 + playerskill - 3/4*goalieskill = chance to score
 					//set goal to true -----------  JLabel, print: "Goal scored by" +player+ "at " +MainMenu.gameTime 
+					Player scorer = scoreBro(team2);
+					int scoreChance = 0;
+					if(scorer.getSkill() >= team1[0].getSkill()){
+						scoreChance = (int) (goalModteam2 + scorer.getSkill() - (2/5)*team1[0].getSkill());
+					}
+					else if(scorer.getSkill() < team1[0].getSkill()){
+						scoreChance = (int) (goalModteam2 + scorer.getSkill() - (3/4)*team1[0].getSkill());
+					}
+					int score = randomn.nextInt(100);
+					if(score <= scoreChance){
+						System.out.println("Team 2 scored");
+					}
+					else{
+						System.out.println("Team 1 blocked");
+					}
 				}
 				else
 				{
 					//team 1 is trying to score except use goalModteam1
 					//same as above comments
+					Player scorer = scoreBro(team1);
+					int scoreChance = 0;
+					if(scorer.getSkill() >= team2[0].getSkill()){
+						scoreChance = (int) (goalModteam1 + scorer.getSkill() - (2/5)*team2[0].getSkill());
+					}
+					else if(scorer.getSkill() < team2[0].getSkill()){
+						scoreChance = (int) (goalModteam1 + scorer.getSkill() - (3/4)*team2[0].getSkill());
+					}
+					int score = randomn.nextInt(100);
+					if(score <= scoreChance){
+						System.out.println("Team 1 scored");
+					}
+					else{
+						System.out.println("Team 2 blocked");
+					}
 				}
 			}
 			else // tie
@@ -130,12 +182,61 @@ public class PlayMenu extends JPanel{
 				{
 					//team1 trying to score
 					//same as all the rest
+					Player scorer = scoreBro(team1);
+					int scoreChance = 0;
+					if(scorer.getSkill() >= team2[0].getSkill()){
+						scoreChance = (int) (goalModteam1 + scorer.getSkill() - (2/5)*team2[0].getSkill());
+					}
+					else if(scorer.getSkill() < team2[0].getSkill()){
+						scoreChance = (int) (goalModteam1 + scorer.getSkill() - (3/4)*team2[0].getSkill());
+					}
+					int score = randomn.nextInt(100);
+					if(score <= scoreChance){
+						System.out.println("Team 1 scored");
+					}
+					else{
+						System.out.println("Team 2 blocked");
+					}
 				}
 				else
 				{
 					//team2 trying to score
 					//same as all the rest
+					Player scorer = scoreBro(team2);
+					int scoreChance = 0;
+					if(scorer.getSkill() >= team1[0].getSkill()){
+						scoreChance = (int) (goalModteam2 + scorer.getSkill() - (2/5)*team1[0].getSkill());
+					}
+					else if(scorer.getSkill() < team1[0].getSkill()){
+						scoreChance = (int) (goalModteam2 + scorer.getSkill() - (3/4)*team1[0].getSkill());
+					}
+					int score = randomn.nextInt(100);
+					if(score <= scoreChance){
+						System.out.println("Team 2 scored");
+					}
+					else{
+						System.out.println("Team 1 blocked");
+					}
 				}
+			}
+		}
+	}
+	public void gameTime(){
+		while(gameIsPlaying) {
+			long millis = System.currentTimeMillis();
+			gameTime++;
+			foulChance(foulChanceSetting, null, null);
+			strikeChance(strikeChanceSetting, null, null);//Seconds in the game passed
+			if(gameTime >= gameEnds)
+			{
+				gameIsPlaying = false;
+		
+				//Determine Winner in new frame
+			}
+			try {
+				Thread.sleep(1000 - millis % 1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
 			}
 		}
 	}
@@ -146,34 +247,45 @@ public class PlayMenu extends JPanel{
 
 				int teamdiff = (team.getOVERALL(team1)) - (team.getOVERALL(team2)); 
 				int team1chance = team.getOVERALL(team1) + teamdiff*3/5;
+				
 				if(randomn.nextInt(team.getOVERALL(team1)*2) <= team1chance){ 
 					//random team 1 player that fouls someone
 					//JLABEL the name of the player that fouled 
+					String fouler = team1[randomn.nextInt(10)].getName();
 					if(cardsev < 20){
 						//JLABEL Red Card to the player
 						//goalModteam2+= 4    goalModteam2 is a int at the class level
+						System.out.println(fouler + "fouled " +team2[randomn.nextInt(10)].getName()+ ", he has been red carded!");
+						goalModteam2 += 4;
+						
 					}
 					else if(cardsev< 65 && cardsev > 20){
 						//JLABEL Yellow Card
-						//goalModteam2++
+						System.out.println(fouler + "fouled " +team2[randomn.nextInt(10)].getName()+ ", he has been yellow carded");
+						goalModteam2++;
 					}
 					else{
 						//JLABEL The Referee Says Play On!
+						System.out.println(fouler + "fouled " +team2[randomn.nextInt(10)].getName()+ ", the referee issues a warning!");
 					}
 				}
 				else{
-					//random team 2 player that fouls someone
-					//JLABEL the name of the player that fouled 
+					String fouler = team2[randomn.nextInt(10)].getName();
 					if(cardsev < 20){
 						//JLABEL Red Card to the player
-						//goalModteam1+= 4
+						//goalModteam2+= 4    goalModteam2 is a int at the class level
+						System.out.println(fouler + "fouled " +team1[randomn.nextInt(10)].getName()+ ", he has been red carded!");
+						goalModteam2 += 4;
+						
 					}
 					else if(cardsev< 65 && cardsev > 20){
 						//JLABEL Yellow Card
-						//goalModteam1++
+						System.out.println(fouler + "fouled " +team1[randomn.nextInt(10)].getName()+ ", he has been yellow carded");
+						goalModteam2++;
 					}
 					else{
 						//JLABEL The Referee Says Play On!
+						System.out.println(fouler + "fouled " +team1[randomn.nextInt(10)].getName()+ ", the referee issues a warning!");
 					}
 				}
 			}
