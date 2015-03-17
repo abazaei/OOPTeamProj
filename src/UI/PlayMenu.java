@@ -29,11 +29,11 @@ import teams.Team;
 public class PlayMenu extends JPanel{
 
 
-	public static int fChance;
-	public static int sChance;
+
+	
 	public static String [] dataArray = new String[2];
-	public int foulChanceSetting = 60;
-	public int strikeChanceSetting = 40;
+	public int foulChanceSetting;
+	public int strikeChanceSetting;
 	public static boolean gameIsPlaying = false;
 	public static int gameTime = 0;
 	public static int gameEnds = 90;
@@ -42,6 +42,7 @@ public class PlayMenu extends JPanel{
 	Random randomn = new Random();
 	private static final int WIDTH = 500;
 	private static final int HEIGHT = 600;
+	public JTextField gen , sim;
 	private Team team = new Team();
 	public String[] teamNames = {
 			"Empty","Barcelona","RealMadrid","PSG","Chelsea"
@@ -64,12 +65,12 @@ public class PlayMenu extends JPanel{
 		this.setPreferredSize(new Dimension(WIDTH,HEIGHT));
 
 		JPanel panel1 = new JPanel();
-		JTextField sim = new JTextField(5);
+		 sim = new JTextField(5);
 		panel1.add(new JLabel("Scoring Chance"));
 		panel1.add(sim);
 
 		JPanel panel2 = new JPanel();
-		JTextField gen = new JTextField(5);
+		 gen = new JTextField(5);
 		panel2.add(new JLabel("Foul Chance"));
 		panel2.add(gen);
 
@@ -81,6 +82,8 @@ public class PlayMenu extends JPanel{
 		this.add(panel2);
 		team1.addActionListener(new t1Listener());
 		team2.addActionListener(new t2Listener());
+		sim.addActionListener(new TextFieldListener());
+		gen.addActionListener(new TextFieldListener() );
 
 
 		panel1.setBounds(75, 60, 150, 35);
@@ -376,27 +379,7 @@ public class PlayMenu extends JPanel{
 				e.printStackTrace();
 			}
 		}
-		public static void write(){
-			FileWriter outputStream = null;
-			try {
-				outputStream = new FileWriter("Soccer.txt");
-				outputStream.write(sChance + "\r\n");
-				outputStream.write(fChance + "\r\n");
-
-			} catch (IOException e) {
-
-				e.printStackTrace();
-			}
-			finally{
-				if(outputStream !=null){
-					try {
-						outputStream.close();
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-				}
-			}
-		}
+		
 		public void read(){
 			FileInputStream inputData = null;
 
@@ -407,8 +390,8 @@ public class PlayMenu extends JPanel{
 					dataArray[i] = scan.nextLine();  
 				}
 
-				foulChanceSetting = Integer.parseInt(dataArray[0]);
-				strikeChanceSetting = Integer.parseInt(dataArray[1]);
+				foulChanceSetting = Integer.valueOf(sim.getText());
+				strikeChanceSetting = Integer.valueOf(gen.getText());
 
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -514,6 +497,39 @@ public class PlayMenu extends JPanel{
 			}
 
 		}
+		
+		
+		private class TextFieldListener implements ActionListener{
 
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				foulChanceSetting = Integer.valueOf(sim.getText());
+				strikeChanceSetting = Integer.valueOf(gen.getText());
+				
+				FileWriter outputStream = null;
+				try {
+					outputStream = new FileWriter("Soccer.txt");
+					outputStream.write(sim.getText()+"\r\n");
+					outputStream.write(gen.getText()+ "\r\n");
+					sim.setText("");
+					gen.setText("");
+
+				} catch (IOException em) {
+
+					em.printStackTrace();
+				}
+				finally{
+					if(outputStream !=null){
+						try {
+							outputStream.close();
+						} catch (IOException em) {
+							em.printStackTrace();
+						}
+					}
+				}
+				
+			}
+			
+		}
 
 	}
