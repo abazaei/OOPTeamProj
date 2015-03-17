@@ -16,7 +16,8 @@ import teams.Team;
 
 
 public class MainMenu extends JFrame{
-
+	
+	public static int gameTime = 0;
 	private static final int WIDTH = 500;
 	private static final int HEIGHT = 600;
 	private static final Dimension DIMENSION = new Dimension(WIDTH,HEIGHT);
@@ -59,7 +60,7 @@ public class MainMenu extends JFrame{
 		MainMenu main = new MainMenu();
 		while(true) {
 			long millis = System.currentTimeMillis();
-			System.out.println(millis);
+			gameTime++; //Seconds in the game passed
 			try {
 				Thread.sleep(1000 - millis % 1000);
 			} catch (InterruptedException e) {

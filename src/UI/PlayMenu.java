@@ -7,6 +7,7 @@ import java.awt.GridLayout;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -21,6 +22,7 @@ import teams.Team;
 
 public class PlayMenu extends JPanel{
 
+	Random randomn = new Random();
 	private static final int WIDTH = 500;
 	private static final int HEIGHT = 600;
 	private Team team = new Team();
@@ -62,7 +64,59 @@ public class PlayMenu extends JPanel{
 		this.setVisible(true);
 
 	}
-
+	
+	//read comments to understand what you need to put there (recursion and jlabel wise)
+	public Boolean strikeChance(int strikechance, Player [] team1, Player [] team2){
+		boolean goal = false;
+		if(randomn.nextInt(100) <= strikechance /*Passed in through read write io*/){
+			if((team.getMID(team1)+team.getOFFENSE(team1))/2> (team.getMID(team2)+team.getOFFENSE(team2)/2)) // team 1 stats > team 2 stats
+			{
+				int teamdiff = (team.getMID(team1)+team.getOFFENSE(team1))/2 - (team.getMID(team2)+team.getOFFENSE(team2))/2; //diff in stats that modifies chance
+				System.out.println();
+				int team1chance = ((team.getMID(team1)+team.getOFFENSE(team1)))/2 + teamdiff*3/5;
+				if(randomn.nextInt(((team.getMID(team1)+team.getOFFENSE(team1)))) <= team1chance) //team1scorechance
+				{
+					//team 1 is trying to score
+					//recursion to find striker (random through team and if player is forward or middle bring player here and compare skill to goalie
+					//if player skill > goalie, playerskill - 2/5*goalieskill = chance to score
+					//if player skill < goalie, playerskill - 3/4*goalieskill = chance to score
+					//set goal to true ------------ JLabel, print: "Goal scored by" +player+ "at  
+				}
+				else
+				{
+					//team 2 is trying to score
+					//same as above comments
+				}
+			}
+			else if((team.getMID(team2)+team.getOFFENSE(team2))> (team.getMID(team1)+team.getOFFENSE(team1))) // team 2 stats > team 1 stats
+			{
+				int teamdiff = (team.getMID(team2)+team.getOFFENSE(team2))/2 - (team.getMID(team1)+team.getOFFENSE(team1))/2; //diff in stats that modifies chance
+				System.out.println();
+				int team2chance = ((team.getMID(team2)+team.getOFFENSE(team2)))/2 + teamdiff*3/5;
+				if(randomn.nextInt(100) <= team2chance) //team2score chance
+				{
+					//team 2 trying to score
+					//recursion to find striker (random through team and if player is forward or middle bring player here and compare skill to goalie
+					//if player skill > goalie, playerskill - 2/5*goalieskill = chance to score
+					//if player skill < goalie, playerskill - 3/4*goalieskill = chance to score
+					//set goal to true -----------  JLabel, print: "Goal scored by" +player+ "at " +MainMenu.gameTime 
+				}
+			}
+			else // tie
+			{
+				if(1 < randomn.nextInt(50))
+				{
+					//team1 trying to score
+				}
+				else
+				{
+					//team2 trying to score
+				}
+			}
+		}
+		return goal;
+	}
+	
 	private final static void setDesign(){
 		try {
 			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
