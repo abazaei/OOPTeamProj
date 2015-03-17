@@ -10,6 +10,7 @@ public class Team {
 	private int OFFENSE;
 	private int MID;
 	private int DEFENSE;
+	private int OVERALL;
 
 	public static int TEAMSIZE = 11;
 
@@ -125,6 +126,19 @@ public class Team {
 		}
 		dEFENSE = dEFENSE/pCounted;
 		return dEFENSE;
+	}
+	public int getOVERALL(Player [] team){
+		int overallsc = 0;
+		int pCounted = 0;
+		for(Player p : team){
+			pCounted++;
+			overallsc += p.getSkill();
+		}
+		overallsc = overallsc/pCounted;
+		return overallsc;
+	}
+	public void setOVERALL(int oVERALL){
+		OVERALL = oVERALL;
 	}
 
 	public void setDEFENSE(int dEFENSE) {

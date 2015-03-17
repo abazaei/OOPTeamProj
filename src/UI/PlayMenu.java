@@ -38,7 +38,7 @@ public class PlayMenu extends JPanel{
 	public PlayMenu(JFrame frame){
 		this.frame = frame;
 		setDesign();
-		
+
 		this.setLayout(null);
 
 		JLabel title = new JLabel("Play Page");
@@ -64,7 +64,7 @@ public class PlayMenu extends JPanel{
 		this.setVisible(true);
 
 	}
-	
+
 	//read comments to understand what you need to put there (recursion and jlabel wise)
 	public Boolean strikeChance(int strikechance, Player [] team1, Player [] team2){
 		boolean goal = false;
@@ -116,7 +116,16 @@ public class PlayMenu extends JPanel{
 		}
 		return goal;
 	}
-	
+	public Boolean foulChance(int foulchance, Player [] team1, Player [] team2){
+		boolean foul = false;
+		if(randomn.nextInt(100) < foulchance){
+			if((team.g(team1)+team.getOFFENSE(team1))/2> (team.getMID(team2)+team.getOFFENSE(team2)/2)){
+				
+				
+			}
+		}
+		return foul;
+	}
 	private final static void setDesign(){
 		try {
 			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -130,10 +139,10 @@ public class PlayMenu extends JPanel{
 	private class t1Listener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			
-//			frame.getRootPane().updateUI();
+
+			//			frame.getRootPane().updateUI();
 			Team t = new Team();
-			
+
 			Player[] pa = Team.teams.get(team1.getSelectedItem());
 			int O = t.getOFFENSE(pa);
 			int M = t.getMID(pa);
@@ -144,7 +153,7 @@ public class PlayMenu extends JPanel{
 			JLabel M1 = new JLabel("Mid score: " + M);
 			JLabel D1 = new JLabel("Defensive score: " + D);
 			JLabel Total1 = new JLabel("Total score: " + total);
-					
+
 			add(O1);
 			add(M1);
 			add(D1);
@@ -154,13 +163,13 @@ public class PlayMenu extends JPanel{
 			M1.setBounds(75, 200, 150, 35);
 			D1.setBounds(75, 250, 150, 35);
 			Total1.setBounds(75, 300, 150, 35);
-//			frame.getRootPane().updateUI();
-//			frame.getRootPane().remove(Total1);
-//			frame.getRootPane().updateUI();
-//			playMenu.removeAll();
-//			revalidate();
-//			repaint();
-//			playMenu.updateUI();
+			//			frame.getRootPane().updateUI();
+			//			frame.getRootPane().remove(Total1);
+			//			frame.getRootPane().updateUI();
+			//			playMenu.removeAll();
+			//			revalidate();
+			//			repaint();
+			//			playMenu.updateUI();
 		}
 	}
 
@@ -198,15 +207,15 @@ public class PlayMenu extends JPanel{
 
 		}
 	}
-	
+
 	private class playGame implements ActionListener{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			
-			
+
+
 		}
-		
+
 	}
 
 }
