@@ -64,6 +64,7 @@ public class PlayMenu extends JPanel{
 		team1.setBounds(75, 100, 150, 35);
 		team2.setBounds(275, 100, 150, 35);
 		title.setBounds(225,50,100,45);
+		run.addActionListener(new runListener());
 		run.setBounds(150, 400, 200, 100);
 
 		setFocusable(true);
@@ -102,7 +103,7 @@ public class PlayMenu extends JPanel{
 					else{
 						System.out.println("Team 2 blocked");
 					}
-					
+
 				}
 				else
 				{
@@ -123,10 +124,10 @@ public class PlayMenu extends JPanel{
 					else{
 						System.out.println("Team 1 blocked");
 					}
-					
+
 				}
 			}
-			
+
 			else if((team.getMID(team2)+team.getOFFENSE(team2))> (team.getMID(team1)+team.getOFFENSE(team1))) // team 2 stats > team 1 stats
 			{
 				int teamdiff = (team.getMID(team2)+team.getOFFENSE(team2))/2 - (team.getMID(team1)+team.getOFFENSE(team1))/2; //diff in stats that modifies chance
@@ -221,18 +222,19 @@ public class PlayMenu extends JPanel{
 			}
 		}
 	}
-	public void gameTime(){
+	public void gameTime(Player[] team1, Player[] team2){
 		//read in the foulChanceSetting and strikeChanceSetting
 		//gameIsPlaying = true when button pressed
 		while(gameIsPlaying) {
 			long millis = System.currentTimeMillis();
 			gameTime++;
-			foulChance(foulChanceSetting, null, null);
-			strikeChance(strikeChanceSetting, null, null);//Seconds in the game passed
+			System.out.println(gameTime);
+			foulChance(foulChanceSetting, team1, team2);
+			strikeChance(strikeChanceSetting, team1, team2);//Seconds in the game passed
 			if(gameTime >= gameEnds)
 			{
 				gameIsPlaying = false;
-		
+
 				//Determine Winner in new frame
 			}
 			try {
@@ -249,7 +251,7 @@ public class PlayMenu extends JPanel{
 
 				int teamdiff = (team.getOVERALL(team1)) - (team.getOVERALL(team2)); 
 				int team1chance = team.getOVERALL(team1) + teamdiff*3/5;
-				
+
 				if(randomn.nextInt(team.getOVERALL(team1)*2) <= team1chance){ 
 					//random team 1 player that fouls someone
 					//JLABEL the name of the player that fouled 
@@ -259,7 +261,7 @@ public class PlayMenu extends JPanel{
 						//goalModteam2+= 4    goalModteam2 is a int at the class level
 						System.out.println(fouler + "fouled " +team2[randomn.nextInt(10)].getName()+ ", he has been red carded!");
 						goalModteam2 += 4;
-						
+
 					}
 					else if(cardsev< 65 && cardsev > 20){
 						//JLABEL Yellow Card
@@ -278,7 +280,7 @@ public class PlayMenu extends JPanel{
 						//goalModteam2+= 4    goalModteam2 is a int at the class level
 						System.out.println(fouler + "fouled " +team1[randomn.nextInt(10)].getName()+ ", he has been red carded!");
 						goalModteam2 += 4;
-						
+
 					}
 					else if(cardsev< 65 && cardsev > 20){
 						//JLABEL Yellow Card
@@ -375,16 +377,6 @@ public class PlayMenu extends JPanel{
 		}
 	}
 
-	private class playGame implements ActionListener{
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-
-
-		}
-
-	}
-	
 	private Player scoreBro(Player[] team1){
 		int rP = randomn.nextInt(11);
 		Player scorer = team1[rP];
@@ -394,10 +386,24 @@ public class PlayMenu extends JPanel{
 		else{
 			scorer = scorer;
 		}
-		
-		
+
+
 		return scorer;
-		
+
+	}
+
+	private class runListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			System.out.println("SHIT SHIT SHIT SHIT SHIT");
+			Player[] teamOne = Team.teams.get(team1.getSelectedItem());
+			Player[] teamTwo = Team.teams.get(team1.getSelectedItem());
+			gameIsPlaying = true;
+			gameTime(teamOne, teamTwo);
+
+		}
+
 	}
 
 }
