@@ -18,12 +18,13 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import player.Player;
+import player.Position;
 import teams.Team;
 
 public class PlayMenu extends JPanel{
 
-	public int goalModteam1;
-	public int goalModteam2;
+	public int goalModteam1 = 0;
+	public int goalModteam2 = 0;
 	Random randomn = new Random();
 	private static final int WIDTH = 500;
 	private static final int HEIGHT = 600;
@@ -75,20 +76,35 @@ public class PlayMenu extends JPanel{
 				int teamdiff = (team.getMID(team1)+team.getOFFENSE(team1))/2 - (team.getMID(team2)+team.getOFFENSE(team2))/2; //diff in stats that modifies chance
 				System.out.println();
 				int team1chance = ((team.getMID(team1)+team.getOFFENSE(team1)))/2 + teamdiff*3/5;
-				if(randomn.nextInt(((team.getMID(team1)+team.getOFFENSE(team1))*2)) <= team1chance) //team1scorechance
-				{
+				if(randomn.nextInt(((team.getMID(team1)+team.getOFFENSE(team1))*2)) <= team1chance){
 					//team 1 is trying to score
 					//recursion to find striker (random through team and if player is forward or middle bring player here and compare skill to goalie
 					//if player skill > goalie, goalModteam1 + playerskill - 2/5*goalieskill = chance to score
 					//if player skill < goalie, goalModteam1 + playerskill - 3/4*goalieskill = chance to score
 					//set goal to true ------------ JLabel, print: "Goal scored by" +player+ "at  
+					Player scorer = scoreBro(team1);
+					int scoreChance = 0;
+					if(scorer.getSkill() >= team2[0].getSkill()){
+						scoreChance = (int) (goalModteam1 + scorer.getSkill() - (2/5)*team2[0].getSkill());
+					}
+					else if(scorer.getSkill() < team2[0].getSkill()){
+						scoreChance = (int) (goalModteam1 + scorer.getSkill() - (3/4)*team2[0].getSkill());
+					}
+					int score = randomn.nextInt(100);
+					if(score <= scoreChance){
+						System.out.println("Team 1 scored");
+					}
+					else{
+						System.out.println("Team 2 blocked");
+					}
+					
 				}
 				else
 				{
 					//team 2 is trying to score
 					//same as above comments, except use goalModteam2
 				}
-			}
+			
 			else if((team.getMID(team2)+team.getOFFENSE(team2))> (team.getMID(team1)+team.getOFFENSE(team1))) // team 2 stats > team 1 stats
 			{
 				int teamdiff = (team.getMID(team2)+team.getOFFENSE(team2))/2 - (team.getMID(team1)+team.getOFFENSE(team1))/2; //diff in stats that modifies chance
@@ -253,6 +269,21 @@ public class PlayMenu extends JPanel{
 
 		}
 
+	}
+	
+	private Player scoreBro(Player[] team1){
+		int rP = randomn.nextInt(11);
+		Player scorer = team1[rP];
+		if(scorer.getPosition() == Position.DEFENDER){
+			scorer = scoreBro(team1);
+		}
+		else{
+			scorer = scorer;
+		}
+		
+		
+		return scorer;
+		
 	}
 
 }
