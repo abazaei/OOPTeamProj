@@ -22,6 +22,8 @@ import teams.Team;
 
 public class PlayMenu extends JPanel{
 
+	public int goalModteam1;
+	public int goalModteam2;
 	Random randomn = new Random();
 	private static final int WIDTH = 500;
 	private static final int HEIGHT = 600;
@@ -66,8 +68,7 @@ public class PlayMenu extends JPanel{
 	}
 
 	//read comments to understand what you need to put there (recursion and jlabel wise)
-	public Boolean strikeChance(int strikechance, Player [] team1, Player [] team2){
-		boolean goal = false;
+	public void strikeChance(int strikechance, Player [] team1, Player [] team2){
 		if(randomn.nextInt(100) <= strikechance /*Passed in through read write io*/){
 			if((team.getMID(team1)+team.getOFFENSE(team1))/2> (team.getMID(team2)+team.getOFFENSE(team2)/2)) // team 1 stats > team 2 stats
 			{
@@ -78,14 +79,14 @@ public class PlayMenu extends JPanel{
 				{
 					//team 1 is trying to score
 					//recursion to find striker (random through team and if player is forward or middle bring player here and compare skill to goalie
-					//if player skill > goalie, playerskill - 2/5*goalieskill = chance to score
-					//if player skill < goalie, playerskill - 3/4*goalieskill = chance to score
+					//if player skill > goalie, goalModteam1 + playerskill - 2/5*goalieskill = chance to score
+					//if player skill < goalie, goalModteam1 + playerskill - 3/4*goalieskill = chance to score
 					//set goal to true ------------ JLabel, print: "Goal scored by" +player+ "at  
 				}
 				else
 				{
 					//team 2 is trying to score
-					//same as above comments
+					//same as above comments, except use goalModteam2
 				}
 			}
 			else if((team.getMID(team2)+team.getOFFENSE(team2))> (team.getMID(team1)+team.getOFFENSE(team1))) // team 2 stats > team 1 stats
@@ -97,13 +98,13 @@ public class PlayMenu extends JPanel{
 				{
 					//team 2 trying to score
 					//recursion to find striker (random through team and if player is forward or middle bring player here and compare skill to goalie
-					//if player skill > goalie, playerskill - 2/5*goalieskill = chance to score
-					//if player skill < goalie, playerskill - 3/4*goalieskill = chance to score
+					//if player skill > goalie, goalModteam2 + playerskill - 2/5*goalieskill = chance to score
+					//if player skill < goalie, goalModteam2 + playerskill - 3/4*goalieskill = chance to score
 					//set goal to true -----------  JLabel, print: "Goal scored by" +player+ "at " +MainMenu.gameTime 
 				}
 				else
 				{
-					//team 1 is trying to score
+					//team 1 is trying to score except use goalModteam1
 					//same as above comments
 				}
 			}
@@ -112,26 +113,55 @@ public class PlayMenu extends JPanel{
 				if(1 < randomn.nextInt(50))
 				{
 					//team1 trying to score
+					//same as all the rest
 				}
 				else
 				{
 					//team2 trying to score
+					//same as all the rest
 				}
 			}
 		}
-		return goal;
 	}
-	public Boolean foulChance(int foulchance, Player [] team1, Player [] team2){
-		boolean foul = false;
+	public void foulChance(int foulchance, Player [] team1, Player [] team2){
 		if(randomn.nextInt(100) < foulchance){
 			if((team.getOVERALL(team1))> (team.getOVERALL(team2))){
-				
-				int teamdiff = (team.getOVERALL(team1)) - (team.getOVERALL(team2)); //diff in stats that modifies chance
+				int cardsev = randomn.nextInt(100);
+
+				int teamdiff = (team.getOVERALL(team1)) - (team.getOVERALL(team2)); 
 				int team1chance = team.getOVERALL(team1) + teamdiff*3/5;
-				if(randomn.nextInt(team.getOVERALL(team1)*2) <= team1chance); //team1scorechance
+				if(randomn.nextInt(team.getOVERALL(team1)*2) <= team1chance){ 
+					//random team 1 player that fouls someone
+					//JLABEL the name of the player that fouled 
+					if(cardsev < 20){
+						//JLABEL Red Card to the player
+						//goalModteam2+= 4
+					}
+					else if(cardsev< 65 && cardsev > 20){
+						//JLABEL Yellow Card
+						//goalModteam2++
+					}
+					else{
+						//JLABEL The Referee Says Play On!
+					}
+				}
+				else{
+					//random team 2 player that fouls someone
+					//JLABEL the name of the player that fouled 
+					if(cardsev < 20){
+						//JLABEL Red Card to the player
+						//goalModteam1+= 4
+					}
+					else if(cardsev< 65 && cardsev > 20){
+						//JLABEL Yellow Card
+						//goalModteam1++
+					}
+					else{
+						//JLABEL The Referee Says Play On!
+					}
+				}
 			}
 		}
-		return foul;
 	}
 	private final static void setDesign(){
 		try {
