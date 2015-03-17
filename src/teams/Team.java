@@ -84,13 +84,11 @@ public class Team {
 		int oFFENSE = 0;
 		for(Player p : team){
 			if(p.getPosition() == Position.FORWARD){
-				System.out.println(p.getPosition());
 				pCounted++;
 				oFFENSE += p.getSkill();
 			}
 		}
 		oFFENSE = oFFENSE/pCounted;
-		System.out.println(oFFENSE);
 		return oFFENSE; //math to average for us
 	}
 
