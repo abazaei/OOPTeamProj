@@ -222,6 +222,8 @@ public class PlayMenu extends JPanel{
 		}
 	}
 	public void gameTime(){
+		//read in the foulChanceSetting and strikeChanceSetting
+		//gameIsPlaying = true when button pressed
 		while(gameIsPlaying) {
 			long millis = System.currentTimeMillis();
 			gameTime++;
