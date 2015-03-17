@@ -74,7 +74,7 @@ public class PlayMenu extends JPanel{
 				int teamdiff = (team.getMID(team1)+team.getOFFENSE(team1))/2 - (team.getMID(team2)+team.getOFFENSE(team2))/2; //diff in stats that modifies chance
 				System.out.println();
 				int team1chance = ((team.getMID(team1)+team.getOFFENSE(team1)))/2 + teamdiff*3/5;
-				if(randomn.nextInt(((team.getMID(team1)+team.getOFFENSE(team1)))) <= team1chance) //team1scorechance
+				if(randomn.nextInt(((team.getMID(team1)+team.getOFFENSE(team1))*2)) <= team1chance) //team1scorechance
 				{
 					//team 1 is trying to score
 					//recursion to find striker (random through team and if player is forward or middle bring player here and compare skill to goalie
@@ -119,9 +119,11 @@ public class PlayMenu extends JPanel{
 	public Boolean foulChance(int foulchance, Player [] team1, Player [] team2){
 		boolean foul = false;
 		if(randomn.nextInt(100) < foulchance){
-			if((team.g(team1)+team.getOFFENSE(team1))/2> (team.getMID(team2)+team.getOFFENSE(team2)/2)){
+			if((team.getOVERALL(team1))> (team.getOVERALL(team2))){
 				
-				
+				int teamdiff = (team.getOVERALL(team1)) - (team.getOVERALL(team2)); //diff in stats that modifies chance
+				int team1chance = team.getOVERALL(team1) + teamdiff*3/5;
+				if(randomn.nextInt(team.getOVERALL(team1)*2) <= team1chance); //team1scorechance
 			}
 		}
 		return foul;
