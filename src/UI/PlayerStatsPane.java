@@ -26,7 +26,7 @@ public class PlayerStatsPane extends JPanel{
 		JPanel panel = new JPanel();
 		this.setLayout(null);
 		JLabel title = new JLabel(player.getName());
-		JLabel position = new JLabel("Position played: " + player.getPosition().getPosition());
+		JLabel position = new JLabel("Position played: " + player.getPosition());
 		JLabel age = new JLabel("Player age: " + player.getAge());
 		JLabel skill = new JLabel("Player skill: " + player.getSkill());
 		JLabel club = new JLabel("Player club: " + player.getClub());
