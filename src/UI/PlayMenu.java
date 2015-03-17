@@ -101,6 +101,11 @@ public class PlayMenu extends JPanel{
 					//if player skill < goalie, playerskill - 3/4*goalieskill = chance to score
 					//set goal to true -----------  JLabel, print: "Goal scored by" +player+ "at " +MainMenu.gameTime 
 				}
+				else
+				{
+					//team 1 is trying to score
+					//same as above comments
+				}
 			}
 			else // tie
 			{
