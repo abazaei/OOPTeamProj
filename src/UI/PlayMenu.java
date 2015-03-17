@@ -30,6 +30,8 @@ public class PlayMenu extends JPanel{
 
 
 
+	public int team1Goals = 0;
+	public int team2Goals = 0;
 	
 	public static String [] dataArray = new String[2];
 	public int foulChanceSetting;
@@ -66,12 +68,12 @@ public class PlayMenu extends JPanel{
 
 		JPanel panel1 = new JPanel();
 		 sim = new JTextField(5);
-		panel1.add(new JLabel("Scoring Chance"));
+		panel1.add(new JLabel("Foul Chance"));
 		panel1.add(sim);
 
 		JPanel panel2 = new JPanel();
 		 gen = new JTextField(5);
-		panel2.add(new JLabel("Foul Chance"));
+		panel2.add(new JLabel("Scoring Chance"));
 		panel2.add(gen);
 
 		this.add(title);
@@ -128,6 +130,7 @@ public class PlayMenu extends JPanel{
 					int score = randomn.nextInt(100);
 					if(score <= scoreChance){
 						System.out.println("Team 1 scored");
+						team1Goals++;
 					}
 					else{
 						System.out.println("Team 2 blocked");
@@ -149,6 +152,7 @@ public class PlayMenu extends JPanel{
 					int score = randomn.nextInt(100);
 					if(score <= scoreChance){
 						System.out.println("Team 2 scored");
+						team2Goals++;
 					}
 					else{
 						System.out.println("Team 1 blocked");
@@ -179,6 +183,7 @@ public class PlayMenu extends JPanel{
 					int score = randomn.nextInt(100);
 					if(score <= scoreChance){
 						System.out.println("Team 2 scored");
+						team2Goals++;
 					}
 					else{
 						System.out.println("Team 1 blocked");
@@ -199,6 +204,7 @@ public class PlayMenu extends JPanel{
 					int score = randomn.nextInt(100);
 					if(score <= scoreChance){
 						System.out.println("Team 1 scored");
+						team1Goals++;
 					}
 					else{
 						System.out.println("Team 2 blocked");
@@ -222,6 +228,7 @@ public class PlayMenu extends JPanel{
 					int score = randomn.nextInt(100);
 					if(score <= scoreChance){
 						System.out.println("Team 1 scored");
+						team1Goals++;
 					}
 					else{
 						System.out.println("Team 2 blocked");
@@ -242,6 +249,7 @@ public class PlayMenu extends JPanel{
 					int score = randomn.nextInt(100);
 					if(score <= scoreChance){
 						System.out.println("Team 2 scored");
+						team2Goals++;
 					}
 					else{
 						System.out.println("Team 1 blocked");
@@ -262,7 +270,18 @@ public class PlayMenu extends JPanel{
 			if(gameTime >= gameEnds)
 			{
 				gameIsPlaying = false;
-
+				System.out.println("======");
+				System.out.println(team1Goals+" - "+team2Goals);
+				System.out.println("======");
+				if(team1Goals > team2Goals){
+					System.out.println("Home team wins!");
+				}
+				else if(team1Goals < team2Goals){
+					System.out.println("Away team wins!");
+				}
+				else if(team1Goals == team2Goals){
+					System.out.println("Draw!");
+				}
 				//Determine Winner in new frame
 			}
 			try {
@@ -390,8 +409,8 @@ public class PlayMenu extends JPanel{
 					dataArray[i] = scan.nextLine();  
 				}
 
-				foulChanceSetting = Integer.valueOf(sim.getText());
-				strikeChanceSetting = Integer.valueOf(gen.getText());
+				foulChanceSetting = Integer.valueOf(gen.getText());
+				strikeChanceSetting = Integer.valueOf(sim.getText());
 
 			} catch (IOException e) {
 				e.printStackTrace();
