@@ -135,7 +135,7 @@ public class PlayMenu extends JPanel{
 					//JLABEL the name of the player that fouled 
 					if(cardsev < 20){
 						//JLABEL Red Card to the player
-						//goalModteam2+= 4
+						//goalModteam2+= 4    goalModteam2 is a int at the class level
 					}
 					else if(cardsev< 65 && cardsev > 20){
 						//JLABEL Yellow Card
