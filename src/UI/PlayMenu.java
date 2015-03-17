@@ -7,13 +7,18 @@ import java.awt.GridLayout;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Random;
+import java.util.Scanner;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -22,7 +27,11 @@ import player.Position;
 import teams.Team;
 
 public class PlayMenu extends JPanel{
-
+		
+	
+	public static int fChance;
+	public static int sChance;
+	public static String [] dataArray = new String[2];
 	public int foulChanceSetting;
 	public int strikeChanceSetting;
 	public static boolean gameIsPlaying = false;
@@ -53,19 +62,37 @@ public class PlayMenu extends JPanel{
 
 		JButton run = new JButton("Run Simulation");
 		this.setPreferredSize(new Dimension(WIDTH,HEIGHT));
+		
+		JPanel panel1 = new JPanel();
+		JTextField sim = new JTextField(5);
+		panel1.add(new JLabel("Scoring Chance"));
+		panel1.add(sim);
+		
+		JPanel panel2 = new JPanel();
+		JTextField gen = new JTextField(5);
+		panel2.add(new JLabel("Foul Chance"));
+		panel2.add(gen);
 
 		this.add(title);
 		this.add(run);
 		this.add(team1);
 		this.add(team2);
+		this.add(panel1);
+		this.add(panel2);
 		team1.addActionListener(new t1Listener());
 		team2.addActionListener(new t2Listener());
-
-		team1.setBounds(75, 100, 150, 35);
-		team2.setBounds(275, 100, 150, 35);
-		title.setBounds(225,50,100,45);
+		
+		
+		panel1.setBounds(75, 60, 150, 35);
+		panel2.setBounds(275,60,150,35);
+		
+		team1.setBounds(75, 120, 150, 35);
+		team2.setBounds(275, 120, 150, 35);
+		title.setBounds(225,20,100,45);
 		run.addActionListener(new runListener());
-		run.setBounds(150, 400, 200, 100);
+		run.setBounds(150, 450, 200, 100);
+		
+		
 
 		setFocusable(true);
 
@@ -304,6 +331,44 @@ public class PlayMenu extends JPanel{
 			e.printStackTrace();
 		}
 	}
+	public static void write(){
+		FileWriter outputStream = null;
+		try {
+			outputStream = new FileWriter("Soccer.txt");
+			outputStream.write(sChance + "\r\n");
+			outputStream.write(fChance + "\r\n");
+			
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		finally{
+			if(outputStream !=null){
+				try {
+					outputStream.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	public void read(){
+		FileInputStream inputData = null;
+
+		try {
+			inputData = new FileInputStream("Soccer.txt");
+			Scanner scan = new Scanner(inputData);
+			for(int i = 0; i<dataArray.length; i++){
+				dataArray[i] = scan.nextLine();  
+			}
+
+			foulChanceSetting = Integer.parseInt(dataArray[0]);
+			strikeChanceSetting = Integer.parseInt(dataArray[1]);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}		
+	}
 
 	private class t1Listener implements ActionListener{
 		@Override
@@ -405,5 +470,6 @@ public class PlayMenu extends JPanel{
 		}
 
 	}
+	
 
 }
