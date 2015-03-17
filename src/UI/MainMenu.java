@@ -56,6 +56,7 @@ public class MainMenu extends JFrame{
 
 	}
 	public static void main(String[] args) {
+		Team.addTeam();
 		MainMenu main = new MainMenu();
 		Team.addTeam();
 		//WHEN PLAY IS PRESSED gameIsPlaying = true;

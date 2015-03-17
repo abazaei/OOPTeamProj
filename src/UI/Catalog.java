@@ -11,21 +11,24 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
+import player.Player;
+import teams.Team;
+
 
 
 public class Catalog extends JPanel {
-	
-	public String [] teamNames = { "FC Barc", "Liverpool", "Man U", "Bayer Munchen"};
 
+	public String [] teamNames = { "Empty","Barcelona","RealMadrid","PSG","Chelsea"};
+	Team team = new Team();
+	JComboBox teamBox = new JComboBox(teamNames);
+	
 	public  Catalog(){
 
-	
+
 
 		JPanel panel = new JPanel();
 		this.setLayout(null);
-		
-		JComboBox teamBox = new JComboBox(teamNames);
-		teamBox.setSelectedItem(6);
+
 		JLabel title = new JLabel(" Player Catalog");
 		JLabel teams = new JLabel(" Selected Team ");
 		JLabel players = new JLabel("Players: ");
@@ -34,69 +37,78 @@ public class Catalog extends JPanel {
 		this.add(title);
 		this.add(teams);
 		this.add(players);
-		
+
 		title.setBounds(200,10,100,45);
 		teamBox.setBounds(180,70,100,45);
 		teams.setBounds(100,70,100,45);
 		players.setBounds(100,150,100,45);
 		teamBox.addActionListener(new ComboBoxListener());
-		
+
+
+	}
+
+	public Player findPlayer(JButton button){
+		Player [] players = Team.teams.get(teamBox.getSelectedItem());
+		Player finalPlayer = null;
+		for(Player p : players){
+			if(p.getName() == button.getText()){
+				finalPlayer = p;
+
+			}
+		}
+
+		return finalPlayer;
+
 
 	}
 
 
 	public class ComboBoxListener implements ActionListener {
 
-		
+
 		public void actionPerformed(ActionEvent e) {
-			JButton button1 = new JButton();
-			JButton button2 = new JButton();
-			JButton button3 = new JButton();
-			JButton button4 = new JButton();
-			JButton button5 = new JButton();
-			JButton button6 = new JButton();
-			JButton button7 = new JButton();
-			JButton button8 = new JButton();
-			JButton button9 = new JButton();
-			JButton button10 = new JButton();
-			JButton button11 = new JButton();
-			
-			
-			add(button1);
-			add(button2);
-			add(button3);
-			add(button4);
-			add(button5);
-			add(button6);
-			add(button7);
-			add(button8);
-			add(button9);
-			add(button10);
-			add(button11);
-			
-			button1.setBounds(150, 150,100,30);
-			button2.setBounds(150, 190,100,30);
-			button3.setBounds(150,240,100,30);
-			button4.setBounds(150, 280,100,30);
-			button5.setBounds(150, 320,100,30);
-			button6.setBounds(150, 360,100,30);
-			button7.setBounds(150, 400,100,30);
-			button8.setBounds(150, 440,100,30);
-			button9.setBounds(150, 480,100,30);
-			button10.setBounds(150, 520,100,30);
-			button11.setBounds(150, 560,100,30);
-			
-			
-			
-			
-			
-				
+			Player [] players = Team.teams.get(teamBox.getSelectedItem());
+			int y = 150;
+
+			for(Player p : players){
+				JButton button = new JButton(p.getName());
+				add(button);
+				button.setBounds(150, y,100,30);
+				y+=40;
+				button.addActionListener(new ButtonListener());
 			}
+			
+
+
 		}
 
 
-
 	}
+	
+	private class ButtonListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			Player p = findPlayer((JButton) e.getSource());
+			JFrame frame = new JFrame();
+
+			frame.setSize(500,600);
+			frame.setVisible(true);
+			frame.setContentPane(new PlayerStatsPane(p));
+			
+			frame.setLayout(null);
+			
+
+			
+		}
+		
+	}
+
+
+
+
+}
 
 
 

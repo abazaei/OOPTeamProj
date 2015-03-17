@@ -1,5 +1,7 @@
 package UI;
 
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -20,7 +22,9 @@ public class PlayerStatsPane extends JPanel{
 
 	public PlayerStatsPane(Player player){
 		
-		PlayerStatsPane pane = new PlayerStatsPane(player);
+//		PlayerStatsPane pane = new PlayerStatsPane(player);
+		JPanel panel = new JPanel();
+		this.setLayout(null);
 		JLabel title = new JLabel(player.getName());
 		JLabel position = new JLabel("Position played: " + player.getPosition().getPosition());
 		JLabel age = new JLabel("Player age: " + player.getAge());
@@ -28,8 +32,19 @@ public class PlayerStatsPane extends JPanel{
 		JLabel club = new JLabel("Player club: " + player.getClub());
 		JLabel nationality = new JLabel("Player nationality: " + player.getNationality());
 		
+		add(title);
+		add(position);
+		add(age);
+		add(skill);
+		add(club);
+		add(nationality);
 		
-		
+		title.setBounds(200,10,100,100);
+		position.setBounds(100,150,200,100);
+		age.setBounds(100,200,200,100);
+		skill.setBounds(100,250,200,100);
+		club.setBounds(100,300,200,100);
+		nationality.setBounds(100,350,200,100);
 		
 		
 		
